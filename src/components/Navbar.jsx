@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import Dropdown from "./Dropdown";
 import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 
 const routes = [
   {
@@ -22,6 +23,8 @@ const routes = [
 
 function Navbar() {
   const user = useSelector((state) => state.auth.user);
+
+  const [sampleString] = useState(user.firstName);
 
   const navigate = useNavigate();
 
@@ -42,6 +45,23 @@ function Navbar() {
       },
     },
   ];
+
+  const getFirstChar = (str) => {
+    const firstChars = str
+      .split(" ")
+      .map((word) => word[0])
+      .join("");
+
+    return firstChars;
+  };
+
+  useEffect(() => {
+    getFirstChar("Internet of things");
+  }, []);
+
+  if (!user) {
+    return null;
+  }
 
   return (
     <div className="rounded-2xl bg-gray-600 px-8 py-3.5 text-center">
@@ -70,11 +90,9 @@ function Navbar() {
 
           <div>
             <Dropdown options={options} right>
-              <img
-                className="h-8 w-8 overflow-hidden rounded-full object-cover"
-                src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8cGVyc29uJTIwZmFjZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
-                alt="image"
-              />
+              <div className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-gray-700 object-cover">
+                <div>{getFirstChar(sampleString)}</div>
+              </div>
             </Dropdown>
           </div>
         </div>

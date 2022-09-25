@@ -15,6 +15,10 @@ function MyEventsPage({ getEvents }) {
   useEffect(() => {
     getEvents();
   }, []);
+
+  if (!events) {
+    return null;
+  }
   return (
     <div>
       <div className="flex gap-8 ">

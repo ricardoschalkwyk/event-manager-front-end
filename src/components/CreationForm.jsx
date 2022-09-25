@@ -12,7 +12,7 @@ import Date from "./forms/Date";
 import Time from "./forms/Time";
 
 import Api from "../api";
-import { add } from "../store/events";
+import { eventAdd } from "../store/events";
 
 function CreationForm() {
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ function CreationForm() {
 
   const [name, setEventName] = useState("");
   const [description, setEventDescription] = useState("");
-  const [occasion, setEventOccasion] = useState("");
+  const [occasion, setEventOccasion] = useState("Charity event");
   const [date, setEventDate] = useState(today);
   const [time, setEventTime] = useState(timeNow);
 
@@ -53,7 +53,7 @@ function CreationForm() {
       const res = await Api.get("/events");
 
       // Sets new event
-      dispatch(add(res));
+      dispatch(eventAdd(res));
       navigate("/my-events");
     } catch (error) {
       console.log(error);

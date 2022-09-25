@@ -1,16 +1,17 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 import Api from "../../api";
 
-import { edit, removeEdit } from "../../store/users";
-
-import Button from "../../components/forms/Button";
 import UserForm from "../../components/forms/UserForm";
+import UserEvent from "./UserEvent";
+
+import { eventAdd } from "../../store/events";
+import { userEdit, removeEdit } from "../../store/users";
 
 const UserDetails = () => {
-  // const events = useSelector((state) => state.events);
+  const event = useSelector((state) => state.events.data);
   const user = useSelector((state) => state.users.edit);
 
   const dispatch = useDispatch();
@@ -21,7 +22,18 @@ const UserDetails = () => {
       // This gets fired once the page is ready
       const response = await Api.get(`/users/${params.id}`);
 
-      dispatch(edit(response));
+      dispatch(userEdit(response));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function getEvents() {
+    try {
+      // This gets fired once the page is ready
+      const response = await Api.get("/events");
+
+      dispatch(eventAdd(response));
     } catch (error) {
       console.log(error);
     }
@@ -29,9 +41,14 @@ const UserDetails = () => {
 
   useEffect(() => {
     getUser();
+    getEvents();
 
     return () => {
       if (user) {
+        dispatch(removeEdit());
+      }
+
+      if (event) {
         dispatch(removeEdit());
       }
     };
@@ -59,20 +76,12 @@ const UserDetails = () => {
           </div>
           <div className="border-b-2 border-gray-100"></div>
 
-          <div className="grid grid-cols-5 grid-rows-1 place-items-center gap-4 p-2 text-gray-500">
-            <div className="col-span-1 pl-2">
-              <h3 className="text-white">Charity Event</h3>
-              <p>UserId:</p>
-            </div>
-
-            <div className="col-span-2 pl-28">16 February</div>
-            <div>
-              <Button className="text-white">Remove</Button>
-            </div>
-
-            <div>
-              <Button className="text-white">Update</Button>
-            </div>
+          <div className="grid grid-cols-5 grid-rows-1 gap-4 p-2 text-gray-500">
+            {event?.map((event) => (
+              <React.Fragment key={event._id}>
+                <UserEvent event={event} dispatch={dispatch} />
+              </React.Fragment>
+            ))}
           </div>
         </div>
       </div>

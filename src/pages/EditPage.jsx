@@ -5,10 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import ActivityBoard from "../components/ActivityBoard";
 import UpdateForm from "../components/UpdateForm";
 import Api from "../api";
-import { edit } from "../store/events";
+import { eventEdit, removeEdit } from "../store/events";
 
 function EditPage({ setEvents }) {
   const event = useSelector((state) => state.events.edit);
+  console.log(event);
 
   const dispatch = useDispatch();
   const params = useParams();
@@ -18,7 +19,7 @@ function EditPage({ setEvents }) {
       // This gets fired once the page is ready
       const res = await Api.get(`/events/${params.id}`);
 
-      dispatch(edit(res));
+      dispatch(eventEdit(res));
     } catch (error) {
       console.log(error);
     }
@@ -26,6 +27,12 @@ function EditPage({ setEvents }) {
 
   useEffect(() => {
     getEvents();
+
+    return () => {
+      if (event) {
+        dispatch(removeEdit());
+      }
+    };
   }, []);
 
   if (!event) {

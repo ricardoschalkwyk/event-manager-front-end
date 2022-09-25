@@ -9,15 +9,18 @@ export const eventsSlice = createSlice({
   name: "events",
   initialState,
   reducers: {
-    add: (state, action) => {
+    eventAdd: (state, action) => {
       state.data = action.payload;
     },
-    edit: (state, action) => {
+    eventEdit: (state, action) => {
       state.edit = action.payload;
+    },
+    removeEdit: (state) => {
+      state.edit = null;
     },
   },
 });
 
-export const { add, edit } = eventsSlice.actions;
+export const { eventAdd, eventEdit, removeEdit } = eventsSlice.actions;
 
 export default eventsSlice.reducer;

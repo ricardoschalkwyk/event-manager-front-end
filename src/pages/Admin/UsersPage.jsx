@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Api from "../../api";
 
-import { add } from "../../store/users";
+import { userAdd } from "../../store/users";
 
 const UsersPage = () => {
   const users = useSelector((state) => state.users);
@@ -14,7 +14,7 @@ const UsersPage = () => {
       // This gets fired once the page is ready
       const response = await Api.get("/users");
 
-      dispatch(add(response));
+      dispatch(userAdd(response));
     } catch (error) {
       console.log(error);
     }
@@ -52,8 +52,8 @@ const UsersPage = () => {
                 </div>
               </div>
 
-              <div className="gap-2.5 py-6 px-3">member</div>
-              <div>
+              <div className="py-6">member</div>
+              <div className="flex items-center">
                 <Link to={`/admin/users/${user._id}/edit`}>Edit</Link>
               </div>
             </React.Fragment>

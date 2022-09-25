@@ -1,6 +1,7 @@
 import { useState } from "react";
+
+import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
 
 import Input from "./forms/Input";
 import Button from "./forms/Button";
@@ -10,12 +11,13 @@ import Date from "./forms/Date";
 import Time from "./forms/Time";
 
 import Api from "../api";
-import { useDispatch } from "react-redux";
-import { add } from "../store/events";
+
+import { eventAdd } from "../store/events";
+import { useNavigate } from "react-router-dom";
 
 function UpdateForm({ event }) {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [name, setEventName] = useState(event.name);
   const [description, setEventDescription] = useState(event.description);
@@ -49,8 +51,7 @@ function UpdateForm({ event }) {
 
       const res = await Api.get("/events");
 
-      dispatch(add(res));
-      navigate("/my-events");
+      dispatch(eventAdd(res));
     } catch (error) {
       console.log(error);
     }
@@ -62,6 +63,8 @@ function UpdateForm({ event }) {
         onSubmit={(e) => {
           e.preventDefault();
           handleSubmit({ name, description, occasion, date, time });
+
+          navigate("/my-events");
         }}
       >
         <div className="p-4">

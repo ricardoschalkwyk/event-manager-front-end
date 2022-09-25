@@ -17,6 +17,10 @@ function HomePage({ getEvents }) {
     getEvents();
   }, []);
 
+  if (!events) {
+    return null;
+  }
+
   return (
     <div>
       <div className="p-2 text-white">

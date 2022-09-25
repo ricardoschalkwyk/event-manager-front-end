@@ -17,7 +17,7 @@ import UserDetails from "./pages/Admin/UserDetails";
 
 import Api from "./api";
 
-import { add } from "./store/events";
+import { eventAdd } from "./store/events";
 
 function App() {
   // Dispatch actions/mutations
@@ -29,7 +29,7 @@ function App() {
       // This gets fired once the page is ready
       const response = await Api.get("/events");
 
-      dispatch(add(response));
+      dispatch(eventAdd(response));
     } catch (error) {
       console.log(error);
     }
@@ -64,6 +64,7 @@ function App() {
           <Route path="/admin">
             <Route path="/admin/users" element={<UsersPage />} />
             <Route path="/admin/users/:id/edit" element={<UserDetails />} />
+            <Route path="/admin//event/:id/edit" element={<EditPage />} />
           </Route>
         </Route>
       </Routes>

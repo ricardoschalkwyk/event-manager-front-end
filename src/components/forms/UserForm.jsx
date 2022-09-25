@@ -1,13 +1,19 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
+
+import Api from "../../api";
+
 import Input from "./Input";
 import Button from "./Button";
-import { add } from "../../store/users";
-import Api from "../../api";
-import { useDispatch } from "react-redux";
+import Dialog from "./Dialog";
+
+import { userAdd } from "../../store/users";
+import { useParams } from "react-router-dom";
 
 const UserForm = ({ user }) => {
   const dispatch = useDispatch();
+  const params = useParams();
 
   const [firstName, setFirstName] = useState(user.firstName);
   const [lastName, setLastName] = useState(user.lastName);
@@ -26,12 +32,24 @@ const UserForm = ({ user }) => {
 
       const res = await Api.get("/users");
 
-      dispatch(add(res));
+      dispatch(userAdd(res));
       setPassword("");
     } catch (error) {
       console.log(error);
     }
   };
+
+  async function deleteUser() {
+    try {
+      await Api.delete(`/users/${params.id}`);
+
+      const res = await Api.get("/users");
+
+      dispatch(userAdd(res));
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <form
@@ -75,7 +93,7 @@ const UserForm = ({ user }) => {
       </div>
 
       <div className="flex justify-center gap-3 rounded-b-md bg-gray-400 py-6 px-3">
-        <Button>Delete user</Button>
+        <Dialog deleteUser={deleteUser} />
         <Button type="submit">Save Changes</Button>
       </div>
     </form>
