@@ -1,18 +1,13 @@
 import PropTypes from "prop-types";
 
-import ActivityBoard from "../components/ActivityBoard";
-import CreationForm from "../components/CreationForm";
+import CreationForm from "../../components/CreationForm";
 
 function CreatePage({ setEvents }) {
   return (
     <div className="container mx-auto ">
-      <div className="flex gap-16">
-        <div className="grow">
+      <div className="flex justify-center gap-16">
+        <div className="max-w-3xl grow">
           <CreationForm setEvent={setEvents} />
-        </div>
-
-        <div>
-          <ActivityBoard />
         </div>
       </div>
     </div>

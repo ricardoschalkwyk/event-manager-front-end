@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
 import {
@@ -14,14 +13,10 @@ import Button from "./forms/Button";
 import Api from "../api";
 
 // This sets the max length of a sentence within an event card
-const MAX_LENGTH = 225;
+const MAX_LENGTH = 100;
 
 function Event({ edit = false, event, getEvents }) {
-  const user = useSelector((state) => state.auth.user);
-
   const navigate = useNavigate();
-
-  const [sampleString] = useState(user.firstName);
 
   const handleDelete = async () => {
     try {
@@ -35,7 +30,7 @@ function Event({ edit = false, event, getEvents }) {
     }
   };
 
-  const getFirstChar = (str) => {
+  const getFirstChar = (str = "") => {
     const firstChars = str
       .split(" ")
       .map((word) => word[0])
@@ -43,14 +38,6 @@ function Event({ edit = false, event, getEvents }) {
 
     return firstChars;
   };
-
-  useEffect(() => {
-    getFirstChar("Internet of things");
-  }, []);
-
-  if (!user) {
-    return null;
-  }
 
   return (
     <div className="self-start rounded-lg bg-white p-4">
@@ -85,11 +72,13 @@ function Event({ edit = false, event, getEvents }) {
         {!edit ? (
           <div className="flex items-center gap-1 pt-1">
             <div className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-gray-700 object-cover">
-              <div>{getFirstChar(sampleString)}</div>
+              <div>{getFirstChar(event.user?.firstName)}</div>
             </div>
 
             <div>
-              <div className="text-xs text-gray-700">Benny Smith</div>
+              <div className="text-xs text-gray-700">
+                {event.user?.firstName} {event.user?.lastName}
+              </div>
             </div>
           </div>
         ) : (

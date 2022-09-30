@@ -5,17 +5,16 @@ import { userAdd } from "../../store/users";
 import { eventAdd } from "../../store/events";
 
 import Button from "../../components/forms/Button";
-
-import UserList from "./UserList";
+import EventList from "./EventList";
 
 import Api from "../../api";
 import { useNavigate } from "react-router-dom";
 
-const UsersPage = () => {
+const EventsPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const users = useSelector((state) => state.users.list);
+  const events = useSelector((state) => state.events.data);
 
   async function getUsers() {
     try {
@@ -49,9 +48,9 @@ const UsersPage = () => {
         <Button
           bg="bg-gray-700"
           text="text-white"
-          onClick={() => navigate("/admin/events")}
+          onClick={() => navigate("/admin/users")}
         >
-          Events
+          Users
         </Button>
       </div>
       <div className="rounded-md bg-gray-700">
@@ -63,8 +62,8 @@ const UsersPage = () => {
         <div className="border-b-2 border-gray-100"></div>
 
         <div className="grid max-h-80 grid-cols-4 gap-4 overflow-hidden overflow-y-scroll p-2 text-gray-500">
-          {users.map((user) => (
-            <UserList key={user._id} user={user} />
+          {events.map((event) => (
+            <EventList key={event._id} event={event} dispatch={dispatch} />
           ))}
         </div>
       </div>
@@ -72,6 +71,6 @@ const UsersPage = () => {
   );
 };
 
-UsersPage.propTypes = {};
+EventsPage.propTypes = {};
 
-export default UsersPage;
+export default EventsPage;

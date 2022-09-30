@@ -2,10 +2,10 @@ import PropTypes from "prop-types";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import ActivityBoard from "../components/ActivityBoard";
-import UpdateForm from "../components/UpdateForm";
-import Api from "../api";
-import { eventEdit, removeEdit } from "../store/events";
+
+import UserUpdateForm from "./events/UserUpdateForm";
+import Api from "../../api";
+import { eventEdit, removeEdit } from "../../store/events";
 
 function EditPage({ setEvents }) {
   const event = useSelector((state) => state.events.edit);
@@ -43,11 +43,7 @@ function EditPage({ setEvents }) {
     <div className="container mx-auto">
       <div className="flex gap-16">
         <div className="grow">
-          <UpdateForm setEvents={setEvents} event={event} />
-        </div>
-
-        <div>
-          <ActivityBoard />
+          <UserUpdateForm setEvents={setEvents} event={event} />
         </div>
       </div>
     </div>

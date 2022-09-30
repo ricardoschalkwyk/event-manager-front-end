@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 
-import Button from "../components/forms/Button";
+import Button from "../../components/forms/Button";
 
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

@@ -1,23 +1,24 @@
 import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
-import { PlusIcon } from "@heroicons/react/20/solid";
-import { useSelector } from "react-redux";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-import ActivityBoard from "../components/ActivityBoard";
-import Filter from "../components/Filter";
-import Button from "../components/forms/Button";
-import Event from "../components/Event";
+import { PlusIcon } from "@heroicons/react/20/solid";
 
-function HomePage({ getEvents }) {
+import Filter from "../../components/Filter";
+import Event from "../../components/Event";
+import Button from "../../components/forms/Button";
+
+function HomePage({ getUserEvents }) {
   const events = useSelector((state) => state.events.data);
+
   const navigate = useNavigate();
 
   useEffect(() => {
-    getEvents();
+    getUserEvents();
   }, []);
 
-  if (!events) {
+  if (!events.length) {
     return null;
   }
 
@@ -26,12 +27,13 @@ function HomePage({ getEvents }) {
       <div className="p-2 text-white">
         <Filter />
       </div>
+
       <div className="flex gap-8 pt-8">
         <div className="grow">
-          <div className="grid grid-cols-2 grid-rows-2 gap-7">
+          <div className="grid grid-cols-3 grid-rows-3 gap-7">
             <Button
-              text="text-black"
               bg="bg-white"
+              text="text-gray-700"
               className="rounded-lg p-4"
               onClick={() => {
                 navigate("/create");
@@ -46,21 +48,15 @@ function HomePage({ getEvents }) {
               </div>
             </Button>
 
-            {events.map((event, index) => (
-              <Button
-                key={index}
-                text="text-black"
-                bg="bg-white"
-                onClick={() => navigate("/event")}
+            {events.map((event) => (
+              <button
+                key={event._id}
+                onClick={() => navigate(`/details/${event._id}`)}
               >
-                <Event event={event} getEvents={getEvents} />
-              </Button>
+                <Event event={event} getUserEvents={getUserEvents} />
+              </button>
             ))}
           </div>
-        </div>
-
-        <div>
-          <ActivityBoard />
         </div>
       </div>
     </div>
@@ -68,7 +64,7 @@ function HomePage({ getEvents }) {
 }
 
 HomePage.propTypes = {
-  getEvents: PropTypes.func,
+  getUserEvents: PropTypes.func,
 };
 
 export default HomePage;

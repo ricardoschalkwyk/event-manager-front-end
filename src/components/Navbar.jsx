@@ -65,7 +65,7 @@ function Navbar() {
 
   return (
     <div className="rounded-2xl bg-gray-600 px-8 py-3.5 text-center">
-      <div className="flex items-center justify-between font-light">
+      <div className="flex items-center justify-between font-medium">
         <div className="flex items-center gap-4 text-gray-300 ">
           {routes.map((route, index) => (
             <NavLink

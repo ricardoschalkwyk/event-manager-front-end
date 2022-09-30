@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import Api from "../api";
-import ErrorMessage from "../components/forms/ErrorMessage";
-import Button from "../components/forms/Button";
-import Input from "../components/forms/Input";
+import Api from "../../api";
+import ErrorMessage from "../../components/forms/ErrorMessage";
+import Button from "../../components/forms/Button";
+import Input from "../../components/forms/Input";
 
 function SignUp() {
   // These four states hold the input values

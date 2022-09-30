@@ -6,15 +6,18 @@ import Link from "../../components/Link";
 
 import Api from "../../api";
 import { eventAdd } from "../../store/events";
+import { useParams } from "react-router-dom";
 
 const UserEvent = ({ event, dispatch }) => {
+  const params = useParams();
+
   const handleDelete = async () => {
     try {
       // Makes delete request
       await Api.delete(`/events/${event._id}`);
 
       // Then makes a Get request after to get to output
-      const res = await Api.get("/events");
+      const res = await Api.get(`/events/findByUserId/${params.id}`);
 
       dispatch(eventAdd(res));
     } catch (error) {

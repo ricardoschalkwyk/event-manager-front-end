@@ -4,9 +4,8 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { PlusIcon } from "@heroicons/react/20/solid";
 
-import ActivityBoard from "../components/ActivityBoard";
-import Button from "../components/forms/Button";
-import Event from "../components/Event";
+import Button from "../../components/forms/Button";
+import Event from "../../components/Event";
 
 function MyEventsPage({ getEvents }) {
   const events = useSelector((state) => state.events.data);
@@ -23,7 +22,7 @@ function MyEventsPage({ getEvents }) {
     <div>
       <div className="flex gap-8 ">
         <div className="grow">
-          <div className="grid grid-cols-2 grid-rows-2 gap-7">
+          <div className="grid grid-cols-3 grid-rows-3 gap-7">
             <Button
               text="text-black"
               bg="bg-white"
@@ -38,14 +37,10 @@ function MyEventsPage({ getEvents }) {
                 </div>
               </div>
             </Button>
-            {events.map((event, index) => (
-              <Event edit key={index} event={event} getEvents={getEvents} />
+            {events.map((event) => (
+              <Event edit key={event._id} event={event} getEvents={getEvents} />
             ))}
           </div>
-        </div>
-
-        <div>
-          <ActivityBoard />
         </div>
       </div>
     </div>
@@ -53,9 +48,7 @@ function MyEventsPage({ getEvents }) {
 }
 
 MyEventsPage.propTypes = {
-  events: PropTypes.array,
   getEvents: PropTypes.func,
-  setId: PropTypes.func,
 };
 
 export default MyEventsPage;

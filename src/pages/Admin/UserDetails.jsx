@@ -7,12 +7,12 @@ import Api from "../../api";
 import UserForm from "../../components/forms/UserForm";
 import UserEvent from "./UserEvent";
 
-import { eventAdd } from "../../store/events";
-import { userEdit, removeEdit } from "../../store/users";
+import { userEdit, removeEdit, eventAdd } from "../../store/users";
 
 const UserDetails = () => {
-  const event = useSelector((state) => state.events.data);
-  const user = useSelector((state) => state.users.edit);
+  const { edit: user, events: userEvents } = useSelector(
+    (state) => state.users
+  );
 
   const dispatch = useDispatch();
   const params = useParams();
@@ -28,10 +28,10 @@ const UserDetails = () => {
     }
   }
 
-  async function getEvents() {
+  async function getUserEvents() {
     try {
       // This gets fired once the page is ready
-      const response = await Api.get("/events");
+      const response = await Api.get(`/events/findByUserId/${params.id}`);
 
       dispatch(eventAdd(response));
     } catch (error) {
@@ -41,14 +41,14 @@ const UserDetails = () => {
 
   useEffect(() => {
     getUser();
-    getEvents();
+    getUserEvents();
 
     return () => {
       if (user) {
         dispatch(removeEdit());
       }
 
-      if (event) {
+      if (userEvents) {
         dispatch(removeEdit());
       }
     };
@@ -77,10 +77,8 @@ const UserDetails = () => {
           <div className="border-b-2 border-gray-100"></div>
 
           <div className="grid grid-cols-5 grid-rows-1 gap-4 p-2 text-gray-500">
-            {event?.map((event) => (
-              <React.Fragment key={event._id}>
-                <UserEvent event={event} dispatch={dispatch} />
-              </React.Fragment>
+            {userEvents?.map((event) => (
+              <UserEvent key={event._id} event={event} dispatch={dispatch} />
             ))}
           </div>
         </div>

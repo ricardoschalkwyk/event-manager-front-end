@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { EnvelopeIcon, LockClosedIcon } from "@heroicons/react/24/solid";
-
-import Api from "../api";
-
-import Button from "../components/forms/Button";
-import Input from "../components/forms/Input";
-import ErrorMessage from "../components/forms/ErrorMessage";
 import { useDispatch } from "react-redux";
-import { login } from "../store/auth";
+
+import { login } from "../../store/auth";
+
+import Api from "../../api";
+
+import Button from "../../components/forms/Button";
+import Input from "../../components/forms/Input";
+import ErrorMessage from "../../components/forms/ErrorMessage";
 
 function SignIn() {
   const dispatch = useDispatch();
