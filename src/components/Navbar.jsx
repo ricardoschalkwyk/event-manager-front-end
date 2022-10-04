@@ -35,6 +35,14 @@ function Navbar() {
         navigate("/admin/users");
       },
     },
+
+    {
+      text: "Profile",
+      onClick: () => {
+        navigate(`/profile/${user._id}`);
+      },
+    },
+
     {
       text: "Log out",
       onClick: () => {

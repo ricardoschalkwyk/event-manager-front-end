@@ -29,13 +29,13 @@ const UserEvent = ({ event, dispatch }) => {
     <>
       <div className="col-span-1 pl-2">
         <h3 className="text-white">{event.occasion}</h3>
-        <p></p>
       </div>
 
       <div className="col-span-2 pl-28">16 February</div>
+
       <div>
         <Button
-          className="text-white"
+          className="font-normal text-white"
           onClick={() => {
             handleDelete();
           }}
@@ -44,7 +44,7 @@ const UserEvent = ({ event, dispatch }) => {
         </Button>
       </div>
 
-      <div className="rounded-md bg-gray-800 py-1.5 px-4 text-white">
+      <div className="flex justify-center rounded-md bg-gray-800 py-1.5 font-normal text-white">
         <Link to={`/admin/event/${event._id}/edit`}>Update</Link>
       </div>
     </>

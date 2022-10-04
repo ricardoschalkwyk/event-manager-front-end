@@ -12,8 +12,8 @@ import { userAdd } from "../../store/users";
 import { useParams } from "react-router-dom";
 
 const UserForm = ({ user }) => {
-  const dispatch = useDispatch();
   const params = useParams();
+  const dispatch = useDispatch();
 
   const [firstName, setFirstName] = useState(user.firstName);
   const [lastName, setLastName] = useState(user.lastName);

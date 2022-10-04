@@ -66,9 +66,11 @@ const UserDetails = () => {
         </div>
       </div>
 
-      <div className="flex justify-center text-white">User Events:</div>
+      <div className="flex max-w-md justify-end pt-12 pr-5 text-white underline">
+        User Events:
+      </div>
 
-      <div className="mt-10 flex items-center justify-center">
+      <div className="mt-5 flex items-center justify-center">
         <div className="rounded-md bg-gray-700">
           <div className="grid grid-cols-5 grid-rows-1 place-content-start rounded-t-md bg-gray-600 p-1 text-white">
             <div className="col-span-2 py-1 px-4">Event</div>

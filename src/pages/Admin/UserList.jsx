@@ -4,14 +4,21 @@ import PropTypes from "prop-types";
 import Link from "../../components/Link";
 
 const UserList = ({ user }) => {
+  const getFirstChar = (str = "") => {
+    const firstChars = str
+      .split(" ")
+      .map((word) => word[0])
+      .join("");
+
+    return firstChars;
+  };
+
   return (
     <React.Fragment>
       <div className="col-span-2 flex items-center gap-4 py-3 px-3">
-        <img
-          className="h-8 w-8 overflow-hidden rounded-full object-cover"
-          src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8cGVyc29uJTIwZmFjZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
-          alt="image"
-        />
+        <div className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-gray-500 object-cover text-gray-800">
+          {getFirstChar(user.firstName)}
+        </div>
         <div>
           <h3 className="text-white">
             {user.firstName} {user.lastName}

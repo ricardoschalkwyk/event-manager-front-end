@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
+import Button from "./forms/Button";
 
-function MembersList({ member }) {
+function MembersList({ listing, setListing, setIsJoined }) {
   const getFirstChar = (str = "") => {
     const firstChars = str
       .split(" ")
@@ -10,24 +11,42 @@ function MembersList({ member }) {
     return firstChars;
   };
 
+  const handleRemove = async () => {
+    try {
+      setListing((list) => list.filter((item) => item._id !== item._id));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="w-80">
       <div className="rounded-lg bg-white p-4">
-        <div className="pb-3 text-sm">Event Members</div>
+        <div className="pb-3 text-center text-sm">Event Members</div>
 
         <div className="border-b-2 border-gray-100"></div>
 
         <div>
-          {member.map((item) => (
-            <div
-              key={item._id}
-              className="flex items-center gap-3 py-2 text-xs"
-            >
-              <div className="flex">
-                <div className="h-6 w-6 overflow-hidden rounded-full object-cover">
-                  {getFirstChar(member.firstName)}
+          {listing.map((item) => (
+            <div key={item._id} className="flex items-center gap-3 pt-2">
+              <div className="flex gap-2">
+                <div className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-gray-700 object-cover text-gray-200">
+                  {getFirstChar(item.firstName)}
                 </div>
-                <div>{member.firstName}</div>
+
+                <div className="flex items-center gap-16">
+                  <div className="flex justify-start text-gray-700">
+                    {item.firstName} {item.lastName}
+                  </div>
+                  <Button
+                    className="py-1.5"
+                    onClick={() => {
+                      handleRemove(), setIsJoined(false);
+                    }}
+                  >
+                    Remove
+                  </Button>
+                </div>
               </div>
             </div>
           ))}
@@ -38,7 +57,9 @@ function MembersList({ member }) {
 }
 
 MembersList.propTypes = {
-  member: PropTypes.array,
+  listing: PropTypes.array,
+  setListing: PropTypes.func,
+  setIsJoined: PropTypes.func,
   user: PropTypes.object,
 };
 

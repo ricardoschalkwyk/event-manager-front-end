@@ -13,8 +13,10 @@ function EventPage() {
   const event = useSelector((state) => state.events.edit);
   const user = useSelector((state) => state.auth.user);
 
-  const [member, setMember] = useState([]);
-  console.log(member);
+  const [joined, setIsJoined] = useState(false);
+
+  const [listing, setListing] = useState([]);
+  console.log(listing);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -31,9 +33,17 @@ function EventPage() {
     }
   };
 
-  const handleMember = async () => {
+  const handleJoin = async () => {
     try {
-      setMember((list) => [...list, user]);
+      setListing((list) => [...list, user]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleLeave = async () => {
+    try {
+      setListing((list) => list.filter((item) => item._id !== user._id));
     } catch (error) {
       console.log(error);
     }
@@ -65,18 +75,23 @@ function EventPage() {
         <div className="gap-6 rounded-md bg-gray-500">
           {/* event creator */}
           <div className="flex gap-2.5 p-2 text-gray-900">
-            Event Creator: <div className="text-gray-50">Benjamin bens</div>
+            Creator: <div className="text-gray-50">Benjamin bens</div>
           </div>
-          {/*  */}
+
           <div className="flex justify-center pt-4">
             <div className="text-gray-900">
               <div className="flex py-3">
-                <div className="font-semibold text-gray-50">{event.name}</div>
+                <div className="flex gap-1 font-semibold text-gray-50">
+                  {event.name} -
+                  <div className="font-medium text-gray-100">
+                    {event.occasion}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* event disc */}
+          {/* event description */}
           <div className=" text-gray-50">
             <div className="gap-2.5 py-3 px-16 text-center">
               <div className="text-gray-900">
@@ -85,13 +100,8 @@ function EventPage() {
               <p>{event.description}</p>
             </div>
           </div>
-          {/*  */}
 
           <div className="mt-3 flex items-center justify-center gap-4 text-gray-900">
-            <div className="flex gap-1.5">
-              Event Type:<div className="text-gray-50">{event.occasion}</div>
-            </div>
-
             <div className="flex gap-1.5">
               Event Time:<div className="text-gray-50">{event.time}</div>
             </div>
@@ -100,23 +110,30 @@ function EventPage() {
               Event Date:<div className="text-gray-50">{event.date}</div>
             </div>
           </div>
+
           <div className="mt-6 flex items-center gap-5 rounded-b-md bg-gray-400 p-3">
             <div className="flex gap-2">
-              <Button
-                onClick={() => handleMember()}
-                bg="bg-white"
-                className="text-gray-900"
-              >
-                Join Event
-              </Button>
-
-              <Button
-                onClick={() => navigate("/")}
-                bg="bg-white"
-                className="text-gray-900"
-              >
-                Leave Event
-              </Button>
+              {!joined ? (
+                <Button
+                  onClick={() => {
+                    handleJoin(), setIsJoined(true);
+                  }}
+                  bg="bg-white"
+                  className="text-gray-900"
+                >
+                  Join Event
+                </Button>
+              ) : (
+                <Button
+                  onClick={() => {
+                    handleLeave(), setIsJoined(false);
+                  }}
+                  bg="bg-white"
+                  className="text-gray-900"
+                >
+                  Leave Event
+                </Button>
+              )}
             </div>
 
             <div className="flex gap-2">
@@ -144,7 +161,7 @@ function EventPage() {
       </div>
 
       <div>
-        <MembersList member={member} />
+        <MembersList setListing={setListing} setIsJoined={setIsJoined} />
       </div>
     </div>
   );
