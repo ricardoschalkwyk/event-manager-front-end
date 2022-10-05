@@ -12,10 +12,11 @@ import Api from "../../api";
 import { useNavigate } from "react-router-dom";
 
 const UsersPage = () => {
+  const user = useSelector((state) => state.auth.user);
+  const users = useSelector((state) => state.users.list);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const users = useSelector((state) => state.users.list);
 
   async function getUsers() {
     try {
@@ -39,6 +40,10 @@ const UsersPage = () => {
   }
 
   useEffect(() => {
+    if (user.role !== "Admin") {
+      navigate("/home");
+    }
+
     getUsers();
     getEvents();
   }, []);

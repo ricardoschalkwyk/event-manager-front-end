@@ -2,14 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import Button from "../../components/forms/Button";
-import Link from "../../components/Link";
 
 import Api from "../../api";
 import { eventAdd } from "../../store/events";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const UserEvent = ({ event, dispatch }) => {
   const params = useParams();
+  const navigate = useNavigate();
 
   const handleDelete = async () => {
     try {
@@ -27,25 +27,32 @@ const UserEvent = ({ event, dispatch }) => {
 
   return (
     <>
-      <div className="col-span-1 pl-2">
+      <div className="col-span-2 pl-2">
         <h3 className="text-white">{event.occasion}</h3>
       </div>
 
-      <div className="col-span-2 pl-28">16 February</div>
+      <div className="col-span-2">16 February</div>
 
-      <div>
-        <Button
-          className="font-normal text-white"
-          onClick={() => {
-            handleDelete();
-          }}
-        >
-          Remove
-        </Button>
-      </div>
-
-      <div className="flex justify-center rounded-md bg-gray-800 py-1.5 font-normal text-white">
-        <Link to={`/admin/event/${event._id}/edit`}>Update</Link>
+      <div className="col-span-1 flex gap-2">
+        <div>
+          <Button
+            className="font-normal text-white"
+            onClick={() => {
+              handleDelete();
+            }}
+          >
+            Remove
+          </Button>
+        </div>
+        <div className="">
+          <Button
+            onClick={() => {
+              navigate(`/admin/event/${event._id}/edit`);
+            }}
+          >
+            Update
+          </Button>
+        </div>
       </div>
     </>
   );

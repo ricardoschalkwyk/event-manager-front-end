@@ -51,7 +51,7 @@ function HomePage({ getUserEvents }) {
             {events.map((event) => (
               <button
                 key={event._id}
-                onClick={() => navigate(`/details/${event._id}`)}
+                onClick={() => navigate(`/home/details/${event._id}`)}
               >
                 <Event event={event} getUserEvents={getUserEvents} />
               </button>

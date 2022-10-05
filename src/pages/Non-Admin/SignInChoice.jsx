@@ -1,13 +1,62 @@
+import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import GoogleLogin from "react-google-login";
+import { gapi } from "gapi-script";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 
-import PropTypes from "prop-types";
-
 import Button from "../../components/forms/Button";
-function SignInChoice({ clientId, onSuccess, onFailure }) {
+// import Api from "../../api";
+function SignInChoice() {
+  const [profile, setProfile] = useState([]);
+  console.log(profile);
+
+  // const [firstName, setFirstName] = useState(profile.givenName);
+
+  // const [lastName, setLastName] = useState(profile.familyName);
+
+  // const [email, setEmail] = useState(profile.email);
+
+  const clientId =
+    "26061662701-q391ntrp908poon72g0gim86pcftfoej.apps.googleusercontent.com";
+
+  const onSuccess = (res) => {
+    setProfile(res.profileObj);
+  };
+
+  const onFailure = (err) => {
+    console.log("failed:", err);
+  };
+
+  // const onSignIp = async (firstName, lastName, email) => {
+  //   try {
+  //     const id_token = googleUser.getAuthResponse().id_token;
+  //     // This function fires the post request and the auth endpoint
+  //     await Api.post("/auth/google-sign-up", {
+  //       firstName,
+  //       lastName,
+  //       email,
+  //     });
+
+  //     navigate("/");
+  //   } catch (error) {
+  //     setFirstName("");
+  //     setLastName("");
+  //     setEmail("");
+  //   }
+  // };
+
+  useEffect(() => {
+    const initClient = () => {
+      gapi.client.init({
+        clientId: clientId,
+        scope: "",
+      });
+    };
+    gapi.load("client:auth2", initClient);
+  }, []);
+
   return (
     <div className="flex h-screen items-center justify-center">
       <div className="text-center">
@@ -56,10 +105,6 @@ function SignInChoice({ clientId, onSuccess, onFailure }) {
   );
 }
 
-SignInChoice.propTypes = {
-  clientId: PropTypes.string,
-  onSuccess: PropTypes.func,
-  onFailure: PropTypes.func,
-};
+SignInChoice.propTypes = {};
 
 export default SignInChoice;

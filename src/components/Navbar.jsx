@@ -1,14 +1,14 @@
 import clsx from "clsx";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
-import Dropdown from "./Dropdown";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
+import Dropdown from "./Dropdown";
+
 const routes = [
   {
-    path: "/",
+    path: "/home",
     name: "Home",
   },
   {
@@ -31,6 +31,7 @@ function Navbar() {
   const options = [
     {
       text: "Admin",
+      roles: ["Admin"],
       onClick: () => {
         navigate("/admin/users");
       },
@@ -38,6 +39,7 @@ function Navbar() {
 
     {
       text: "Profile",
+      roles: ["Admin", "User"],
       onClick: () => {
         navigate(`/profile/${user._id}`);
       },
@@ -45,6 +47,7 @@ function Navbar() {
 
     {
       text: "Log out",
+      roles: ["Admin", "User"],
       onClick: () => {
         localStorage.removeItem("token");
         localStorage.removeItem("user");
@@ -54,6 +57,18 @@ function Navbar() {
     },
   ];
 
+  const filteredOptions = () => {
+    const list = [];
+    options.forEach((option) => {
+      if (!option.roles.some((role) => role === user.role)) {
+        return null;
+      }
+      list.push(option);
+    });
+
+    return list;
+  };
+  console.log(filteredOptions());
   const getFirstChar = (str) => {
     const firstChars = str
       .split(" ")
@@ -97,7 +112,7 @@ function Navbar() {
           </div>
 
           <div>
-            <Dropdown options={options} right>
+            <Dropdown options={filteredOptions()} right>
               <div className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-gray-700 object-cover">
                 <div>{getFirstChar(sampleString)}</div>
               </div>

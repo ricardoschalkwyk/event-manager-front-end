@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { gapi } from "gapi-script";
 
 import Layout from "./pages/Non-Admin/Layout";
 
@@ -30,18 +28,6 @@ function App() {
   const dispatch = useDispatch();
   // Select store data to use inside the components
 
-  const [profile, setProfile] = useState([]);
-
-  const clientId =
-    "26061662701-q391ntrp908poon72g0gim86pcftfoej.apps.googleusercontent.com";
-
-  const onSuccess = (res) => {
-    console.log("success:", res);
-  };
-  const onFailure = (err) => {
-    console.log("failed:", err);
-  };
-
   async function getEvents() {
     try {
       // This gets fired once the page is ready
@@ -65,30 +51,11 @@ function App() {
     }
   }
 
-  useEffect(() => {
-    const initClient = () => {
-      gapi.client.init({
-        clientId: clientId,
-        scope: "",
-      });
-    };
-    gapi.load("client:auth2", initClient);
-  });
-
   return (
     <div>
       <Routes>
         {/* Routes will determine which component is shown */}
-        <Route
-          path="/sign-in-choice"
-          element={
-            <SignInChoice
-              clientId={clientId}
-              onSuccess={onSuccess}
-              onFailure={onFailure}
-            />
-          }
-        />
+        <Route path="/sign-in-choice" element={<SignInChoice />} />
 
         <Route path="/sign-in" element={<SignIn />} />
 
@@ -96,7 +63,7 @@ function App() {
 
         <Route element={<Layout />}>
           <Route
-            path="/"
+            path="/home"
             index
             element={<HomePage getUserEvents={getUserEvents} />}
           />
@@ -113,7 +80,7 @@ function App() {
           />
 
           <Route
-            path="/details/:id"
+            path="/home/details/:id"
             element={<EventPage getUserEvents={getUserEvents} />}
           />
 

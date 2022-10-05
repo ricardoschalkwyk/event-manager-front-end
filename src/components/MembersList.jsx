@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+
 import Button from "./forms/Button";
 
 function MembersList({ listing, setListing, setIsJoined }) {
@@ -20,7 +21,7 @@ function MembersList({ listing, setListing, setIsJoined }) {
   };
 
   return (
-    <div className="w-80">
+    <div>
       <div className="rounded-lg bg-white p-4">
         <div className="pb-3 text-center text-sm">Event Members</div>
 
@@ -35,7 +36,7 @@ function MembersList({ listing, setListing, setIsJoined }) {
                 </div>
 
                 <div className="flex items-center gap-16">
-                  <div className="flex justify-start text-gray-700">
+                  <div className="text-sm text-gray-700">
                     {item.firstName} {item.lastName}
                   </div>
                   <Button

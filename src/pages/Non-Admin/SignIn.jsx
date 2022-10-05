@@ -51,7 +51,7 @@ function SignIn() {
 
       dispatch(login(newSignIn.user));
 
-      navigate("/");
+      navigate("/home");
     } catch (error) {
       setIsLoading(false);
       setErrorMessage(error.message);
@@ -65,9 +65,9 @@ function SignIn() {
   // It will only navigate if a token is valid
   useEffect(() => {
     if (token) {
-      navigate("/");
+      navigate("/home");
     }
-  }, []);
+  }, [token]);
 
   return (
     <div className="flex h-screen items-center justify-center">

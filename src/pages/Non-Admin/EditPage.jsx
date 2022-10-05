@@ -2,9 +2,11 @@ import PropTypes from "prop-types";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import MembersList from "../../components/MembersList";
+
 import UpdateForm from "../../components/UpdateForm";
+
 import Api from "../../api";
+
 import { eventEdit, removeEdit } from "../../store/events";
 
 function EditPage({ setEvents }) {
@@ -44,10 +46,6 @@ function EditPage({ setEvents }) {
       <div className="flex gap-16">
         <div className="grow">
           <UpdateForm setEvents={setEvents} event={event} />
-        </div>
-
-        <div>
-          <MembersList />
         </div>
       </div>
     </div>
