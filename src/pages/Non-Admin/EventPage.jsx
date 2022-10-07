@@ -73,7 +73,7 @@ function EventPage() {
   }
 
   return (
-    <div className="flex justify-center gap-16">
+    <div className="justify-center gap-16 md:m-4 md:flex">
       <div className="grow rounded-md bg-gray-500">
         {/* event creator */}
         <div className="flex gap-2.5 p-2 text-gray-900">
@@ -83,7 +83,7 @@ function EventPage() {
         <div className="pt-4">
           <div className="text-gray-900">
             <div className="py-3">
-              <div className="flex gap-1 font-semibold text-gray-50">
+              <div className="flex justify-center gap-1 font-semibold text-gray-50">
                 {event.name} -
                 <div className="font-medium text-gray-100">
                   {event.occasion}

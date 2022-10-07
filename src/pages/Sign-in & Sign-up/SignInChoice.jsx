@@ -60,15 +60,15 @@ function SignInChoice() {
   return (
     <div className="flex h-screen items-center justify-center">
       <div className="text-center">
-        <div className="text-gray-200">
+        <div className="text-gray-700">
           <div className="pb-2 text-3xl font-bold">
             Welcome to Event Management!
           </div>
           <div className="pb-4 text-sm">Sign in with the following:</div>
         </div>
-        <div className="mt-2 space-y-4 px-10">
+        <div className="space-y-4">
           <GoogleLogin
-            className="flex w-full place-content-center space-x-1 rounded bg-red-600 text-white"
+            className="w-full place-content-center"
             clientId={clientId}
             buttonText="Sign in with Google"
             onSuccess={onSuccess}
@@ -79,7 +79,8 @@ function SignInChoice() {
 
           <Button
             bg="bg-blue-500"
-            className="flex w-full place-content-center space-x-1 rounded p-2 text-white"
+            padding="p-3"
+            className="flex w-full place-content-center space-x-1 rounded-sm text-white shadow-sm shadow-slate-500"
           >
             <div>
               <FontAwesomeIcon icon={faFacebook} />
@@ -89,7 +90,7 @@ function SignInChoice() {
           </Button>
 
           <Link
-            className="flex w-full place-content-center space-x-1 rounded bg-gray-500 p-2 text-white"
+            className="flex w-full place-content-center space-x-1 rounded-sm bg-gray-500 p-2.5 text-white shadow-sm shadow-slate-500"
             to="/sign-in"
             as={NavLink}
           >

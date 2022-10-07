@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import Dropdown from "./Dropdown";
 
@@ -23,8 +23,6 @@ const routes = [
 
 function Navbar() {
   const user = useSelector((state) => state.auth.user);
-
-  const [sampleString] = useState(user.firstName);
 
   const navigate = useNavigate();
 
@@ -68,7 +66,7 @@ function Navbar() {
 
     return list;
   };
-  console.log(filteredOptions());
+
   const getFirstChar = (str) => {
     const firstChars = str
       .split(" ")
@@ -89,7 +87,7 @@ function Navbar() {
   return (
     <div className="rounded-2xl bg-gray-600 px-8 py-3.5 text-center">
       <div className="flex items-center justify-between font-medium">
-        <div className="flex items-center gap-4 text-gray-300 ">
+        <div className="flex items-center gap-4 text-gray-300 md:pr-6">
           {routes.map((route, index) => (
             <NavLink
               key={index}
@@ -106,18 +104,20 @@ function Navbar() {
           ))}
         </div>
 
-        <div className="flex items-center gap-8 text-gray-300">
-          <div>
-            {user.firstName} {user.lastName}
-          </div>
-
-          <div>
-            <Dropdown options={filteredOptions()} right>
-              <div className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-gray-700 object-cover">
-                <div>{getFirstChar(sampleString)}</div>
-              </div>
-            </Dropdown>
-          </div>
+        <div className="rounded-md border-2 border-double border-black bg-gray-300 p-1">
+          <Dropdown options={filteredOptions()} right>
+            <div className="flex items-center gap-4 text-gray-700 md:shrink-0 ">
+              {window.innerWidth > 426 ? (
+                <div>
+                  {user.firstName} {user.lastName}
+                </div>
+              ) : (
+                <div className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-gray-700 object-cover text-gray-300">
+                  <div>{getFirstChar(user.firstName)}</div>
+                </div>
+              )}
+            </div>
+          </Dropdown>
         </div>
       </div>
     </div>

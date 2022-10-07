@@ -24,7 +24,7 @@ function HomePage({ getUserEvents }) {
 
   return (
     <div>
-      <div className="p-2 text-white">
+      <div className="p-2">
         <Filter />
       </div>
 
@@ -34,7 +34,7 @@ function HomePage({ getUserEvents }) {
             <Button
               bg="bg-white"
               text="text-gray-700"
-              className="rounded-lg p-4"
+              className="rounded-md border-black hover:border-r-4 hover:border-b-4 hover:border-solid"
               onClick={() => {
                 navigate("/create");
               }}
@@ -42,7 +42,8 @@ function HomePage({ getUserEvents }) {
               <div className="w-full">
                 <div className="text-center">Create Event</div>
                 <div className="border-b-2 border-gray-100 pt-1.5"></div>
-                <div className="flex items-center justify-center pt-9">
+
+                <div className="flex items-center justify-center pt-5">
                   <PlusIcon className="h-24 w-24 text-black" />
                 </div>
               </div>
@@ -51,6 +52,7 @@ function HomePage({ getUserEvents }) {
             {events.map((event) => (
               <button
                 key={event._id}
+                className="rounded-md border-black hover:border-r-4 hover:border-b-4 hover:border-solid"
                 onClick={() => navigate(`/home/details/${event._id}`)}
               >
                 <Event event={event} getUserEvents={getUserEvents} />

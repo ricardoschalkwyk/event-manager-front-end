@@ -26,7 +26,7 @@ function MyEventsPage({ getEvents }) {
             <Button
               text="text-black"
               bg="bg-white"
-              className="rounded-lg p-4"
+              className="rounded-md border-black hover:border-2 hover:border-solid"
               onClick={() => navigate("/create")}
             >
               <div className="w-full">

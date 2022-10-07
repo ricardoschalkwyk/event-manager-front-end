@@ -2,10 +2,12 @@ import { Route, Routes } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import Layout from "./pages/Non-Admin/Layout";
+import UserLayout from "./pages/Non-Admin/UserLayout";
+import AdminLayout from "./pages/Admin/AdminLayout";
 
-import SignInChoice from "./pages/Non-Admin/SignInChoice";
-import SignIn from "./pages/Non-Admin/SignIn";
-import SignUp from "./pages/Non-Admin/SignUp";
+import SignInChoice from "./pages/Sign-in & Sign-up/SignInChoice";
+import SignIn from "./pages/Sign-in & Sign-up/SignIn";
+import SignUp from "./pages/Sign-in & Sign-up/SignUp";
 
 import HomePage from "./pages/Non-Admin/HomePage";
 import CreatePage from "./pages/Non-Admin/CreatePage";
@@ -62,33 +64,32 @@ function App() {
         <Route path="/sign-up" element={<SignUp />} />
 
         <Route element={<Layout />}>
-          <Route
-            path="/home"
-            index
-            element={<HomePage getUserEvents={getUserEvents} />}
-          />
+          <Route element={<UserLayout />}>
+            <Route
+              path="/home"
+              index
+              element={<HomePage getUserEvents={getUserEvents} />}
+            />
+            <Route path="/create" element={<CreatePage />} />
+            <Route path="/event/:id/edit" element={<EditPage />} />
+            <Route path="/profile/:id" element={<Profile />} />
+            <Route
+              path="/my-events"
+              element={<MyEventsPage getEvents={getEvents} />}
+            />
+            <Route
+              path="/home/details/:id"
+              element={<EventPage getUserEvents={getUserEvents} />}
+            />
+          </Route>
 
-          <Route path="/create" element={<CreatePage />} />
-
-          <Route path="/event/:id/edit" element={<EditPage />} />
-
-          <Route path="/profile/:id" element={<Profile />} />
-
-          <Route
-            path="/my-events"
-            element={<MyEventsPage getEvents={getEvents} />}
-          />
-
-          <Route
-            path="/home/details/:id"
-            element={<EventPage getUserEvents={getUserEvents} />}
-          />
-
-          <Route path="/admin">
-            <Route path="users" element={<UsersPage />} />
-            <Route path="events" element={<EventsPage />} />
-            <Route path="users/:id/edit" element={<UserDetails />} />
-            <Route path="event/:id/edit" element={<UserEditPage />} />
+          <Route element={<AdminLayout />}>
+            <Route path="/admin">
+              <Route path="users" element={<UsersPage />} />
+              <Route path="events" element={<EventsPage />} />
+              <Route path="users/:id/edit" element={<UserDetails />} />
+              <Route path="event/:id/edit" element={<UserEditPage />} />
+            </Route>
           </Route>
         </Route>
       </Routes>

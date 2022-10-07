@@ -15,7 +15,7 @@ function SignIn() {
   const dispatch = useDispatch();
 
   // These two states hold the input values
-  const [email, setEmail] = useState("Benny@gmail.com");
+  const [email, setEmail] = useState("Fiona.Lehner@hotmail.com");
   const [password, setPassword] = useState("qwerty");
 
   const [isLoading, setIsLoading] = useState(false);
@@ -71,8 +71,8 @@ function SignIn() {
 
   return (
     <div className="flex h-screen items-center justify-center">
-      <div className="rounded-lg bg-gray-300 p-8 text-center">
-        <div className="mb-8 text-black">
+      <div className="rounded-lg bg-gray-700 p-8 text-center">
+        <div className="mb-8 text-gray-300">
           <h2 className="text-3xl font-bold">Sign in to Event Management!</h2>
         </div>
         <form
@@ -115,7 +115,8 @@ function SignIn() {
           <Button
             type="submit"
             variant="primary"
-            className="mt-8 w-full"
+            bg="bg-gray-300"
+            className="mt-8 w-full font-bold text-gray-700"
             loading={isLoading}
           >
             Sign in

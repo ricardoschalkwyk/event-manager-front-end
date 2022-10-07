@@ -4,7 +4,7 @@ import CreationForm from "../../components/CreationForm";
 
 function CreatePage({ setEvents }) {
   return (
-    <div className="container mx-auto ">
+    <div className="container mx-auto">
       <div className="flex justify-center gap-16">
         <div className="max-w-3xl grow">
           <CreationForm setEvent={setEvents} />

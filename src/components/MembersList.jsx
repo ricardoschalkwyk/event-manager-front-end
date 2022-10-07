@@ -22,8 +22,10 @@ function MembersList({ listing, setListing, setIsJoined }) {
 
   return (
     <div>
-      <div className="rounded-lg bg-white p-4">
-        <div className="pb-3 text-center text-sm">Event Members</div>
+      <div className="rounded-lg bg-gray-500 p-4">
+        <div className="pb-3 text-center font-bold text-gray-200">
+          Event Members
+        </div>
 
         <div className="border-b-2 border-gray-100"></div>
 
@@ -36,7 +38,7 @@ function MembersList({ listing, setListing, setIsJoined }) {
                 </div>
 
                 <div className="flex items-center gap-16">
-                  <div className="text-sm text-gray-700">
+                  <div className="text-sm text-gray-200">
                     {item.firstName} {item.lastName}
                   </div>
                   <Button
