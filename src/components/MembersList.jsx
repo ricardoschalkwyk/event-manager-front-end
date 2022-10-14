@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 import Button from "./forms/Button";
 
-function MembersList({ listing, setListing, setIsJoined }) {
+function MembersList({ listing, setIsJoined }) {
   const getFirstChar = (str = "") => {
     const firstChars = str
       .split(" ")
@@ -14,7 +14,8 @@ function MembersList({ listing, setListing, setIsJoined }) {
 
   const handleRemove = async () => {
     try {
-      setListing((list) => list.filter((item) => item._id !== item._id));
+      // await Api.get(`/events/${params.id}/leave`);
+      // getEvent();
     } catch (error) {
       console.log(error);
     }
@@ -61,7 +62,8 @@ function MembersList({ listing, setListing, setIsJoined }) {
 
 MembersList.propTypes = {
   listing: PropTypes.array,
-  setListing: PropTypes.func,
+  params: PropTypes.object,
+  getEvent: PropTypes.func,
   setIsJoined: PropTypes.func,
   user: PropTypes.object,
 };

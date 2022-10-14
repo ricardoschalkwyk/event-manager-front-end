@@ -85,15 +85,18 @@ function Navbar() {
   }
 
   return (
-    <div className="rounded-2xl bg-gray-600 px-8 py-3.5 text-center">
+    <div className="rounded-2xl bg-gray-600 px-4 py-3.5 text-center md:px-8">
       <div className="flex items-center justify-between font-medium">
         <div className="flex items-center gap-4 text-gray-300 md:pr-6">
+          <div className="shrink-0 rounded-3xl border-2 bg-orange-300 p-2 font-extrabold text-white">
+            E-Management
+          </div>
           {routes.map((route, index) => (
             <NavLink
               key={index}
               className={({ isActive }) =>
                 clsx(
-                  "rounded-2xl px-5 py-2 transition-all",
+                  "hidden rounded-2xl px-5 py-2 transition-all md:inline-block",
                   isActive ? "bg-white text-gray-700 shadow-md" : "bg-gray-600"
                 )
               }
@@ -106,16 +109,14 @@ function Navbar() {
 
         <div className="rounded-md border-2 border-double border-black bg-gray-300 p-1">
           <Dropdown options={filteredOptions()} right>
-            <div className="flex items-center gap-4 text-gray-700 md:shrink-0 ">
-              {window.innerWidth > 426 ? (
-                <div>
-                  {user.firstName} {user.lastName}
-                </div>
-              ) : (
-                <div className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-gray-700 object-cover text-gray-300">
-                  <div>{getFirstChar(user.firstName)}</div>
-                </div>
-              )}
+            <div className="flex items-center gap-4 text-gray-700 md:shrink-0">
+              <div className="hidden md:block">
+                {user.firstName} {user.lastName}
+              </div>
+
+              <div className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-gray-700 object-cover text-gray-300 md:hidden">
+                <div>{getFirstChar(user.firstName)}</div>
+              </div>
             </div>
           </Dropdown>
         </div>

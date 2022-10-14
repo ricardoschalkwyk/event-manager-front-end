@@ -14,7 +14,7 @@ import Button from "./forms/Button";
 import UserImages from "./UserImages";
 
 // This sets the max length of a sentence within an event card
-let MAX_LENGTH = 100;
+let MAX_LENGTH = 99;
 
 if (window.innerWidth > 424) {
   MAX_LENGTH = 30;

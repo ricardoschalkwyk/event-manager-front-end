@@ -39,14 +39,14 @@ function Button({
 
 Button.propTypes = {
   className: PropTypes.string,
-  children: PropTypes.node,
   type: PropTypes.string,
+  bg: PropTypes.string,
+  text: PropTypes.string,
+  padding: PropTypes.string,
   onClick: PropTypes.func,
   disabled: PropTypes.bool,
   loading: PropTypes.bool,
-  bg: PropTypes.string,
-  padding: PropTypes.string,
-  text: PropTypes.string,
+  children: PropTypes.node,
 };
 
 export default Button;

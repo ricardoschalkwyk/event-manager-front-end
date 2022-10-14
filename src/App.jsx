@@ -12,18 +12,21 @@ import SignUp from "./pages/Sign-in & Sign-up/SignUp";
 import HomePage from "./pages/Non-Admin/HomePage";
 import CreatePage from "./pages/Non-Admin/CreatePage";
 import MyEventsPage from "./pages/Non-Admin/MyEventsPage";
-import EventPage from "./pages/Non-Admin/EventPage";
 import EditPage from "./pages/Non-Admin/EditPage";
+import Profile from "./pages/Non-Admin/Profile";
 
 import UsersPage from "./pages/Admin/UsersPage";
 import UserDetails from "./pages/Admin/UserDetails";
 import UserEditPage from "./pages/Admin/UserEditPage";
+import EventsPage from "./pages/Admin/EventsPage";
 
 import Api from "./api";
 
 import { eventAdd } from "./store/events";
-import EventsPage from "./pages/Admin/EventsPage";
-import Profile from "./pages/Non-Admin/Profile";
+
+// Todo list
+
+// Mobile prep on UI // Clean up and refine Event Modal // Test animations on buttons //
 
 function App() {
   // Dispatch actions/mutations
@@ -66,8 +69,8 @@ function App() {
         <Route element={<Layout />}>
           <Route element={<UserLayout />}>
             <Route
-              path="/home"
               index
+              path="/home"
               element={<HomePage getUserEvents={getUserEvents} />}
             />
             <Route path="/create" element={<CreatePage />} />
@@ -76,10 +79,6 @@ function App() {
             <Route
               path="/my-events"
               element={<MyEventsPage getEvents={getEvents} />}
-            />
-            <Route
-              path="/home/details/:id"
-              element={<EventPage getUserEvents={getUserEvents} />}
             />
           </Route>
 

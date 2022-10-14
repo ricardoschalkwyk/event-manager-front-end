@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 
+import PropTypes from "prop-types";
+
 import Api from "../../api";
 
 import MembersList from "../../components/MembersList";
@@ -9,11 +11,13 @@ import Button from "../../components/forms/Button";
 
 import { eventEdit } from "../../store/events";
 
-function EventPage() {
+function EventPage({ eventId, closeModal }) {
   const event = useSelector((state) => state.events.edit);
+
   const user = useSelector((state) => state.auth.user);
 
   const [joined, setIsJoined] = useState(false);
+  const [members, setIsMembers] = useState(false);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -22,7 +26,7 @@ function EventPage() {
   const getEvent = async () => {
     try {
       // Then makes a Get request after to get to output
-      const res = await Api.get(`/events/${params.id}`);
+      const res = await Api.get(`/events/${eventId}`);
 
       dispatch(eventEdit(res));
 
@@ -34,7 +38,7 @@ function EventPage() {
 
   const handleJoin = async () => {
     try {
-      await Api.get(`/events/${params.id}/join`);
+      await Api.get(`/events/${id}/join`);
 
       getEvent();
     } catch (error) {
@@ -44,7 +48,7 @@ function EventPage() {
 
   const handleLeave = async () => {
     try {
-      await Api.get(`/events/${params.id}/leave`);
+      await Api.get(`/events/${id}/leave`);
 
       getEvent();
     } catch (error) {
@@ -55,7 +59,7 @@ function EventPage() {
   const handleDelete = async () => {
     try {
       // Makes delete request
-      await Api.delete(`/events/${event._id}`);
+      await Api.delete(`/events/${id}`);
 
       // Then makes a Get request after to get to output
       getEvent();
@@ -73,7 +77,7 @@ function EventPage() {
   }
 
   return (
-    <div className="justify-center gap-16 md:m-4 md:flex">
+    <div className="justify-center gap-16 md:m-2">
       <div className="grow rounded-md bg-gray-500">
         {/* event creator */}
         <div className="flex gap-2.5 p-2 text-gray-900">
@@ -113,7 +117,18 @@ function EventPage() {
           </div>
         </div>
 
-        <div className="mt-6 flex items-center justify-between gap-5 rounded-b-md bg-gray-400 p-3 ">
+        <div className="mt-6 flex items-center justify-between rounded-b-md bg-gray-400 p-3">
+          <Button
+            onClick={() => {
+              closeModal();
+            }}
+            bg="bg-white"
+            className="text-gray-900"
+            padding="px-4 py-2"
+          >
+            Close
+          </Button>
+
           <div>
             {!joined ? (
               <Button
@@ -140,33 +155,45 @@ function EventPage() {
 
           <div className="flex gap-2">
             <Button
-              onClick={() => navigate("/")}
+              onClick={() => setIsMembers(true)}
               bg="bg-white"
               className="text-gray-900"
             >
-              Back to home
+              Members
             </Button>
 
-            <Button
-              bg="bg-white"
-              className="text-red-500"
-              onClick={() => {
-                handleDelete();
-                navigate("/");
-              }}
-            >
-              End Event
-            </Button>
+            {event.user === user._id && (
+              <Button
+                onClick={() => {
+                  handleDelete();
+                  navigate("/");
+                }}
+                bg="bg-white"
+                className="text-red-500"
+              >
+                End Event
+              </Button>
+            )}
           </div>
         </div>
       </div>
 
-      <div>
-        <MembersList listing={event.members} setIsJoined={setIsJoined} />
-      </div>
+      {members && (
+        <div className="pt-4">
+          <MembersList
+            params={params}
+            getEvent={getEvent}
+            listing={event.members}
+            setIsJoined={setIsJoined}
+          />
+        </div>
+      )}
     </div>
   );
 }
-EventPage.propTypes = {};
+EventPage.propTypes = {
+  eventId: PropTypes.string,
+  closeModal: PropTypes.func,
+};
 
 export default EventPage;
