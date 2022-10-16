@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import PropTypes from "prop-types";
 
@@ -11,17 +11,16 @@ import Button from "../../components/forms/Button";
 
 import { eventEdit } from "../../store/events";
 
-function EventPage({ eventId, closeModal }) {
+function EventPage({ closeModal }) {
   const event = useSelector((state) => state.events.edit);
+  const eventId = useSelector((state) => state.events.eventId);
 
   const user = useSelector((state) => state.auth.user);
 
   const [joined, setIsJoined] = useState(false);
-  const [members, setIsMembers] = useState(false);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const params = useParams();
 
   const getEvent = async () => {
     try {
@@ -38,7 +37,7 @@ function EventPage({ eventId, closeModal }) {
 
   const handleJoin = async () => {
     try {
-      await Api.get(`/events/${id}/join`);
+      await Api.get(`/events/${eventId}/join`);
 
       getEvent();
     } catch (error) {
@@ -48,7 +47,7 @@ function EventPage({ eventId, closeModal }) {
 
   const handleLeave = async () => {
     try {
-      await Api.get(`/events/${id}/leave`);
+      await Api.get(`/events/${eventId}/leave`);
 
       getEvent();
     } catch (error) {
@@ -59,7 +58,7 @@ function EventPage({ eventId, closeModal }) {
   const handleDelete = async () => {
     try {
       // Makes delete request
-      await Api.delete(`/events/${id}`);
+      await Api.delete(`/events/${eventId}`);
 
       // Then makes a Get request after to get to output
       getEvent();
@@ -154,11 +153,7 @@ function EventPage({ eventId, closeModal }) {
           </div>
 
           <div className="flex gap-2">
-            <Button
-              onClick={() => setIsMembers(true)}
-              bg="bg-white"
-              className="text-gray-900"
-            >
+            <Button bg="bg-white" className="text-gray-900">
               Members
             </Button>
 
@@ -178,21 +173,17 @@ function EventPage({ eventId, closeModal }) {
         </div>
       </div>
 
-      {members && (
-        <div className="pt-4">
-          <MembersList
-            params={params}
-            getEvent={getEvent}
-            listing={event.members}
-            setIsJoined={setIsJoined}
-          />
-        </div>
-      )}
+      <div className="pt-4">
+        <MembersList
+          getEvent={getEvent}
+          listing={event.members}
+          setIsJoined={setIsJoined}
+        />
+      </div>
     </div>
   );
 }
 EventPage.propTypes = {
-  eventId: PropTypes.string,
   closeModal: PropTypes.func,
 };
 

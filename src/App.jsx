@@ -26,7 +26,7 @@ import { eventAdd } from "./store/events";
 
 // Todo list
 
-// Mobile prep on UI // Clean up and refine Event Modal // Test animations on buttons //
+// Mobile prep on UI // Test animations on buttons //
 
 function App() {
   // Dispatch actions/mutations

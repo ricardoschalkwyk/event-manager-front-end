@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 import EventPage from "../../pages/Non-Admin/EventPage";
 
-export default function EventDialog({ isOpen, setIsOpen, eventId }) {
+export default function EventDialog({ isOpen, setIsOpen }) {
   function closeModal() {
     setIsOpen(false);
   }
@@ -40,7 +40,7 @@ export default function EventDialog({ isOpen, setIsOpen, eventId }) {
                 <Dialog.Panel className="w-full max-w-lg transform overflow-hidden rounded-md bg-gray-200 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title className="text-lg font-medium leading-6 text-gray-900">
                     {/* Event */}
-                    <EventPage eventId={eventId} closeModal={closeModal} />
+                    <EventPage closeModal={closeModal} />
                     {/*  */}
                   </Dialog.Title>
                 </Dialog.Panel>
@@ -56,5 +56,4 @@ export default function EventDialog({ isOpen, setIsOpen, eventId }) {
 EventDialog.propTypes = {
   isOpen: PropTypes.bool,
   setIsOpen: PropTypes.func,
-  eventId: PropTypes.string,
 };

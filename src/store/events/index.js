@@ -4,6 +4,7 @@ const initialState = {
   data: [],
   eventUser: null,
   edit: null,
+  eventId: null,
 };
 
 export const eventsSlice = createSlice({
@@ -21,12 +22,17 @@ export const eventsSlice = createSlice({
     eventEdit: (state, action) => {
       state.edit = action.payload;
     },
+
+    eventId: (state, action) => {
+      state.eventId = action.payload;
+    },
+
     removeEdit: (state) => {
       state.edit = null;
     },
   },
 });
 
-export const { eventAdd, eventEdit, removeEdit } = eventsSlice.actions;
+export const { eventAdd, eventEdit, removeEdit, eventId } = eventsSlice.actions;
 
 export default eventsSlice.reducer;

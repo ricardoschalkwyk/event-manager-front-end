@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { ArrowPathIcon, PlusIcon } from "@heroicons/react/20/solid";
 
@@ -10,24 +10,33 @@ import Button from "../../components/forms/Button";
 import EventDialog from "../../components/forms/EventDialog";
 
 function HomePage({ getUserEvents }) {
+  // Events are kept in the events redux store
   const events = useSelector((state) => state.events.data);
 
-  const navigate = useNavigate();
+  // This helps the eventId for later use
+  const eventId = useSelector((state) => state.events.eventId);
 
+  // Loading state
   const [isLoading, setIsLoading] = useState(false);
-  const [eventId, setEventId] = useState();
 
+  // Controls the modal
   let [isOpen, setIsOpen] = useState(false);
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   useEffect(() => {
+    // set transitions for loading state
     setTimeout(() => {
       setIsLoading(true);
     }, 150);
 
+    // Get events on first render
     getUserEvents();
     return () => {};
   }, []);
 
+  // What is shown when loading state is true
   if (!isLoading) {
     return (
       <div className="flex items-center justify-center">
@@ -36,6 +45,7 @@ function HomePage({ getUserEvents }) {
     );
   }
 
+  // Checks if events exist
   if (!events.length) {
     return null;
   }
@@ -60,12 +70,14 @@ function HomePage({ getUserEvents }) {
         </div>
       </Button>
 
+      {/* Mapping events for homepage render */}
       {events.map((event) => (
         <button
           key={event._id}
           className="rounded-md ring-orange-300 hover:ring-4"
           onClick={() => {
-            setEventId(event._id);
+            // onClick adds eventId to state
+            dispatch(eventId(event._id));
             setIsOpen(true);
           }}
         >
@@ -73,13 +85,10 @@ function HomePage({ getUserEvents }) {
         </button>
       ))}
 
+      {/* Opens when event is clicked */}
       {isOpen && (
         <div>
-          <EventDialog
-            isOpen={isOpen}
-            setIsOpen={setIsOpen}
-            eventId={eventId}
-          />
+          <EventDialog isOpen={isOpen} setIsOpen={setIsOpen} />
         </div>
       )}
     </div>
