@@ -8,13 +8,11 @@ import { ArrowPathIcon, PlusIcon } from "@heroicons/react/20/solid";
 import Event from "../../components/Event";
 import Button from "../../components/forms/Button";
 import EventDialog from "../../components/forms/EventDialog";
+import { idCollector } from "../../store/events";
 
 function HomePage({ getUserEvents }) {
   // Events are kept in the events redux store
   const events = useSelector((state) => state.events.data);
-
-  // This helps the eventId for later use
-  const eventId = useSelector((state) => state.events.eventId);
 
   // Loading state
   const [isLoading, setIsLoading] = useState(false);
@@ -77,7 +75,7 @@ function HomePage({ getUserEvents }) {
           className="rounded-md ring-orange-300 hover:ring-4"
           onClick={() => {
             // onClick adds eventId to state
-            dispatch(eventId(event._id));
+            dispatch(idCollector(event._id));
             setIsOpen(true);
           }}
         >

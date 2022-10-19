@@ -23,7 +23,7 @@ export const eventsSlice = createSlice({
       state.edit = action.payload;
     },
 
-    eventId: (state, action) => {
+    idCollector: (state, action) => {
       state.eventId = action.payload;
     },
 
@@ -33,6 +33,7 @@ export const eventsSlice = createSlice({
   },
 });
 
-export const { eventAdd, eventEdit, removeEdit, eventId } = eventsSlice.actions;
+export const { eventAdd, eventEdit, removeEdit, idCollector } =
+  eventsSlice.actions;
 
 export default eventsSlice.reducer;

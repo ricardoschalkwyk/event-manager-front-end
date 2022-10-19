@@ -27,13 +27,17 @@ const UserEvent = ({ event, dispatch }) => {
 
   return (
     <>
-      <div className="col-span-2 pl-2">
+      <div className="col-span-1 pl-2">
         <h3 className="text-white">{event.occasion}</h3>
       </div>
 
-      <div className="col-span-2">16 February</div>
+      <div className="col-span-1 pl-2">
+        <h3 className="text-white">{event.name}</h3>
+      </div>
 
-      <div className="col-span-1 flex gap-2">
+      <div className="col-span-1">{event.date}</div>
+
+      <div className="col-span-1 gap-2 md:flex">
         <div>
           <Button
             className="font-normal text-white"

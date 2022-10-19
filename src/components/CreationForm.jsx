@@ -1,5 +1,4 @@
 import { useState } from "react";
-import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
@@ -61,7 +60,7 @@ function CreationForm() {
   };
 
   return (
-    <div className="grow rounded-md bg-gray-500 object-contain">
+    <div className="rounded-md bg-gray-500">
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -75,55 +74,53 @@ function CreationForm() {
         }}
       >
         <div className="p-4">
-          <div className="gap-6">
-            <div className="gap-1 text-gray-50">
-              <h1>What is your event name</h1>
-              <div className="gap-2.5 py-2">
-                <Input
-                  type="text"
-                  placeholder={"Event name"}
-                  value={name}
-                  onChange={(e) => setEventName(e.target.value)}
-                  className="text-black"
-                />
-              </div>
+          <div className="text-gray-50">
+            <h1>What is your event name</h1>
+            <div className="py-2">
+              <Input
+                type="text"
+                placeholder={"Event name"}
+                value={name}
+                onChange={(e) => setEventName(e.target.value)}
+                className="text-black"
+              />
             </div>
-            <div className="gap-1 text-gray-50">
-              <h1>What is your event about?</h1>
-              <div className="gap-2.5 py-3">
-                <TextArea
-                  name=""
-                  id=""
-                  cols="30"
-                  rows="10"
-                  placeholder="Event description"
-                  value={description}
-                  onChange={(e) => setEventDescription(e.target.value)}
-                  className="h-20"
-                ></TextArea>
-              </div>
+          </div>
+          <div className="text-gray-50">
+            <h1>What is your event about?</h1>
+            <div className="py-3">
+              <TextArea
+                name=""
+                id=""
+                cols="30"
+                rows="10"
+                placeholder="Event description"
+                value={description}
+                onChange={(e) => setEventDescription(e.target.value)}
+                className="h-20"
+              ></TextArea>
             </div>
-            <div className="flex items-baseline gap-2 ">
-              <div>
-                <Select options={options} setEventOccasion={setEventOccasion} />
-              </div>
-              <div>
-                <Date
-                  value={date}
-                  onChange={(e) => setEventDate(e.target.value)}
-                />
-              </div>
-              <div>
-                <Time
-                  type="time"
-                  value={time}
-                  onChange={(e) => setEventTime(e.target.value)}
-                />
-              </div>
+          </div>
+          <div className="flex items-baseline gap-2">
+            <div>
+              <Select options={options} setEventOccasion={setEventOccasion} />
+            </div>
+            <div>
+              <Date
+                value={date}
+                onChange={(e) => setEventDate(e.target.value)}
+              />
+            </div>
+            <div>
+              <Time
+                type="time"
+                value={time}
+                onChange={(e) => setEventTime(e.target.value)}
+              />
             </div>
           </div>
         </div>
-        <footer className="flex justify-end gap-2.5 rounded-b-md bg-gray-400 px-6 py-3">
+        <footer className="flex justify-end gap-2.5 rounded-b-md bg-gray-400 px-4 py-3">
           <Button bg="bg-gray-500" className="text-white" type="submit">
             Create
           </Button>
@@ -133,9 +130,6 @@ function CreationForm() {
   );
 }
 
-CreationForm.propTypes = {
-  setEvent: PropTypes.array,
-  handleUpdate: PropTypes.func,
-};
+CreationForm.propTypes = {};
 
 export default CreationForm;

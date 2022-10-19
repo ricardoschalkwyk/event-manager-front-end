@@ -3,7 +3,12 @@ import { Fragment } from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
 
-export default function Dropdown({ options = [], children, right }) {
+export default function Dropdown({
+  options = [],
+  navigation = [],
+  children,
+  right,
+}) {
   return (
     <>
       <Menu as="div" className="relative inline-block text-left">
@@ -46,6 +51,26 @@ export default function Dropdown({ options = [], children, right }) {
                 </Menu.Item>
               </div>
             ))}
+
+            {navigation.map((item, index) => (
+              <div className="px-1 py-1" key={index}>
+                <Menu.Item>
+                  {({ active }) => (
+                    <button
+                      className={clsx(
+                        active ? "bg-gray-500 text-white" : "text-gray-900",
+                        "group flex w-full items-center rounded-md px-2 py-2 text-sm"
+                      )}
+                      onClick={() => {
+                        item.onClick?.();
+                      }}
+                    >
+                      {item.text}
+                    </button>
+                  )}
+                </Menu.Item>
+              </div>
+            ))}
           </Menu.Items>
         </Transition>
       </Menu>
@@ -55,6 +80,7 @@ export default function Dropdown({ options = [], children, right }) {
 
 Dropdown.propTypes = {
   options: PropTypes.array,
+  navigation: PropTypes.array,
   children: PropTypes.node,
   right: PropTypes.bool,
 };

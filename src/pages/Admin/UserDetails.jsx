@@ -61,23 +61,24 @@ const UserDetails = () => {
   return (
     <>
       <div>
-        <div className="mx-auto w-96 rounded-t-md bg-gray-700">
+        <div className="mx-auto w-96 rounded-md bg-gray-700">
           <UserForm user={user} />
         </div>
       </div>
 
-      <div className="pt-12 text-white">User Events</div>
+      <div className="pt-12 font-bold">User Events</div>
 
       <div className="mt-5">
         <div className="rounded-md bg-gray-700">
-          <div className="grid grid-cols-5 gap-2 rounded-t-md bg-gray-600 text-sm text-white">
-            <div className="col-span-2 py-1 pl-2 uppercase">Event</div>
-            <div className="col-span-2 py-1 uppercase">Created</div>
+          <div className="grid grid-cols-4 gap-2 rounded-t-md bg-gray-600 text-sm text-white">
+            <div className="col-span-1 py-1 pl-2 uppercase">Occasion</div>
+            <div className="col-span-1 py-1 pl-2 uppercase">Event Title</div>
+            <div className="col-span-1 py-1 uppercase">Date</div>
             <div className="col-span-1 py-1 uppercase">Actions</div>
           </div>
           <div className="border-b-2 border-gray-100"></div>
 
-          <div className="grid grid-cols-5 items-center gap-2 py-2 text-gray-500">
+          <div className="grid grid-cols-4 items-center gap-2 py-2 text-gray-500">
             {userEvents?.map((event) => (
               <UserEvent key={event._id} event={event} dispatch={dispatch} />
             ))}

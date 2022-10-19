@@ -1,25 +1,58 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
-import GoogleLogin from "react-google-login";
-import { gapi } from "gapi-script";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 
+import GoogleLogin from "react-google-login";
+import { gapi } from "gapi-script";
+
 import Button from "../../components/forms/Button";
-// import Api from "../../api";
+import Api from "../../api";
 function SignInChoice() {
-  const [profile, setProfile] = useState([]);
+  const navigate = useNavigate();
+
+  const [profile, setProfile] = useState({});
   console.log(profile);
 
-  // const [firstName, setFirstName] = useState(profile.givenName);
+  const googleUser = profile;
 
-  // const [lastName, setLastName] = useState(profile.familyName);
+  const [firstName, setFirstName] = useState(profile.givenName);
 
-  // const [email, setEmail] = useState(profile.email);
+  const [lastName, setLastName] = useState(profile.familyName);
 
-  const clientId =
+  const [email, setEmail] = useState(profile.email);
+
+  const client_id =
     "26061662701-q391ntrp908poon72g0gim86pcftfoej.apps.googleusercontent.com";
+
+  const onSignIn = async () => {
+    try {
+      const id_token = googleUser.getAuthResponse().id_token;
+      // This function fires the post request and the auth endpoint
+      setFirstName(profile.givenName);
+      setLastName(profile.familyName);
+      setEmail(profile.email);
+
+      await Api.post("/auth/google-sign-up", {
+        id_token,
+        firstName,
+        lastName,
+        email,
+      });
+
+      navigate("/sign-up");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // function onSignOut() {
+  //   var auth2 = gapi.auth2.getAuthInstance();
+  //   auth2.signOut().then(function () {
+  //     console.log("User signed out.");
+  //   });
+  // }
 
   const onSuccess = (res) => {
     setProfile(res.profileObj);
@@ -29,28 +62,15 @@ function SignInChoice() {
     console.log("failed:", err);
   };
 
-  // const onSignIp = async (firstName, lastName, email) => {
-  //   try {
-  //     const id_token = googleUser.getAuthResponse().id_token;
-  //     // This function fires the post request and the auth endpoint
-  //     await Api.post("/auth/google-sign-up", {
-  //       firstName,
-  //       lastName,
-  //       email,
-  //     });
-
-  //     navigate("/");
-  //   } catch (error) {
-  //     setFirstName("");
-  //     setLastName("");
-  //     setEmail("");
-  //   }
-  // };
+  function handleResponse(response) {
+    console.log(response.credential);
+  }
 
   useEffect(() => {
     const initClient = () => {
       gapi.client.init({
-        clientId: clientId,
+        clientId: client_id,
+        callback: handleResponse,
         scope: "",
       });
     };
@@ -69,12 +89,13 @@ function SignInChoice() {
         <div className="space-y-4">
           <GoogleLogin
             className="w-full place-content-center"
-            clientId={clientId}
+            clientId={client_id}
             buttonText="Sign in with Google"
             onSuccess={onSuccess}
             onFailure={onFailure}
             cookiePolicy={"single_host_origin"}
             isSignedIn={true}
+            onClick={() => onSignIn()}
           />
 
           <Button

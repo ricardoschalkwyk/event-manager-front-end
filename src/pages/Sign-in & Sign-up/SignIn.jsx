@@ -44,9 +44,7 @@ function SignIn() {
 
       // Then if it does exist the token given to a user when logging in will
       // be saved to localStorage
-
       localStorage.setItem("token", newSignIn.token);
-
       localStorage.setItem("user", JSON.stringify(newSignIn.user));
 
       dispatch(login(newSignIn.user));
