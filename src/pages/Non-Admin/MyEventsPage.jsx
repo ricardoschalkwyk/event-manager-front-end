@@ -34,7 +34,7 @@ function MyEventsPage({ getEvents }) {
   }
   return (
     <div>
-      <div className="flex gap-8 ">
+      <div className="flex gap-8">
         <div className="grow">
           <div className="grid grid-cols-1 gap-7 md:grid-cols-3">
             <Button

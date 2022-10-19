@@ -101,7 +101,7 @@ function CreationForm() {
               ></TextArea>
             </div>
           </div>
-          <div className="flex items-baseline gap-2">
+          <div className="items-baseline gap-2 space-y-3 md:flex">
             <div>
               <Select options={options} setEventOccasion={setEventOccasion} />
             </div>

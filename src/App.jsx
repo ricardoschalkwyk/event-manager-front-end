@@ -1,13 +1,18 @@
 import { Route, Routes } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import Layout from "./pages/Non-Admin/Layout";
-import UserLayout from "./pages/Non-Admin/UserLayout";
-import AdminLayout from "./pages/Admin/AdminLayout";
-
 import SignInChoice from "./pages/Sign-in & Sign-up/SignInChoice";
 import SignIn from "./pages/Sign-in & Sign-up/SignIn";
 import SignUp from "./pages/Sign-in & Sign-up/SignUp";
+
+import UsersPage from "./pages/Admin/UsersPage";
+import UserDetails from "./pages/Admin/UserDetails";
+import UserEditPage from "./pages/Admin/UserEditPage";
+import EventsPage from "./pages/Admin/EventsPage";
+
+import Layout from "./pages/Non-Admin/Layout";
+import UserLayout from "./pages/Non-Admin/UserLayout";
+import AdminLayout from "./pages/Admin/AdminLayout";
 
 import HomePage from "./pages/Non-Admin/HomePage";
 import CreatePage from "./pages/Non-Admin/CreatePage";
@@ -15,14 +20,10 @@ import MyEventsPage from "./pages/Non-Admin/MyEventsPage";
 import EditPage from "./pages/Non-Admin/EditPage";
 import Profile from "./pages/Non-Admin/Profile";
 
-import UsersPage from "./pages/Admin/UsersPage";
-import UserDetails from "./pages/Admin/UserDetails";
-import UserEditPage from "./pages/Admin/UserEditPage";
-import EventsPage from "./pages/Admin/EventsPage";
-
 import Api from "./api";
 
 import { eventAdd } from "./store/events";
+import GoogleProcess from "./pages/Sign-in & Sign-up/GoogleProcess";
 
 // Todo list
 
@@ -60,6 +61,8 @@ function App() {
     <div>
       <Routes>
         {/* Routes will determine which component is shown */}
+        <Route path="/auth/google" element={<GoogleProcess />} />
+
         <Route path="/sign-in-choice" element={<SignInChoice />} />
 
         <Route path="/sign-in" element={<SignIn />} />

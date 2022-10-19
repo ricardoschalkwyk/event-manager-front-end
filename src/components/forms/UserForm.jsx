@@ -60,21 +60,21 @@ const UserForm = ({ user }) => {
       }}
     >
       <div className="grid grid-cols-2 grid-rows-2 gap-4 text-black">
-        <div className="gap-2 pl-4 pt-4">
+        <div className="pl-4 pt-4">
           <Input
             placeholder="First name"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
           />
         </div>
-        <div className="gap-2 pr-4 pt-4">
+        <div className="pr-4 pt-4">
           <Input
             placeholder="Last name"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
           />
         </div>
-        <div className="gap-2 pl-4 pb-4">
+        <div className="pl-4 pb-4">
           <Input
             type="password"
             placeholder="Password"

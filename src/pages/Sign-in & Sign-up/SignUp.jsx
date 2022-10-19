@@ -54,10 +54,10 @@ function SignUp() {
   };
 
   return (
-    <div className="flex h-screen items-center justify-center">
-      <div className="rounded-2xl bg-gray-300 p-10 text-center">
-        <div className="text-black">
-          <div className="pb-4 text-4xl font-extrabold ">
+    <div className="flex h-screen items-center justify-center p-4">
+      <div className="rounded-2xl bg-gray-700 p-10 text-center">
+        <div className="text-white">
+          <div className="pb-4 text-4xl font-extrabold">
             Sign up to Event Management!
           </div>
         </div>
@@ -131,7 +131,8 @@ function SignUp() {
               loading={isLoading}
               variant="primary"
               type="submit"
-              className="mt-8 w-full"
+              bg="bg-gray-300"
+              className="mt-8 w-full font-bold text-gray-700"
             >
               Sign up
             </Button>

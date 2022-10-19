@@ -66,10 +66,10 @@ function UserUpdateForm({ event }) {
         }}
       >
         <div className="p-4">
-          <div className="gap-6">
-            <div className="gap-1 text-gray-50">
+          <div className="">
+            <div className="text-gray-50">
               <h1>What is your event name </h1>
-              <div className="gap-2.5 py-2">
+              <div className="py-2">
                 <Input
                   type="text"
                   placeholder={"Event name"}
@@ -79,9 +79,9 @@ function UserUpdateForm({ event }) {
                 />
               </div>
             </div>
-            <div className="gap-1 text-gray-50">
+            <div className="text-gray-50">
               <h1>What is your event about?</h1>
-              <div className="gap-2.5 py-3">
+              <div className="py-3">
                 <TextArea
                   name=""
                   id=""
@@ -94,7 +94,7 @@ function UserUpdateForm({ event }) {
                 ></TextArea>
               </div>
             </div>
-            <div className="flex items-baseline gap-2 ">
+            <div className="flex items-baseline gap-2">
               <div>
                 <Select options={options} setEventOccasion={setEventOccasion} />
               </div>

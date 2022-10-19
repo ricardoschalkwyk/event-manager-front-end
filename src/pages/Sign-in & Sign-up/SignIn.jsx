@@ -68,7 +68,7 @@ function SignIn() {
   }, [token]);
 
   return (
-    <div className="flex h-screen items-center justify-center">
+    <div className="flex h-screen items-center justify-center p-4">
       <div className="rounded-lg bg-gray-700 p-8 text-center">
         <div className="mb-8 text-gray-300">
           <h2 className="text-3xl font-bold">Sign in to Event Management!</h2>
@@ -121,8 +121,8 @@ function SignIn() {
           </Button>
         </form>
         <div className="border-b border-gray-400 pt-5"></div>
-        <div className="mt-4 text-xs">
-          Don&apos;t have an account?
+        <div className="mt-4 text-xs text-white">
+          <div>Don&apos;t have an account?</div>
           <Link to="/sign-up" className="underline">
             Sign up
           </Link>

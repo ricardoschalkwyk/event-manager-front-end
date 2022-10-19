@@ -56,10 +56,10 @@ const EventsPage = () => {
 
       <div className="rounded-md bg-gray-700">
         <div className="grid grid-cols-4 gap-4 rounded-md bg-gray-600 p-2 text-white">
-          <div className="col-span-1 gap-2.5 py-3 px-3">Event</div>
-          <div className="col-span-1 gap-2.5 py-3 px-3">Members</div>
-          <div className="gap-2.5 py-3 px-3">User</div>
-          <div className="gap-2.5 py-3 px-3">Actions</div>
+          <div className="col-span-1 py-3 px-3">Event</div>
+          <div className="col-span-1 py-3 px-3">Members</div>
+          <div className="py-3 px-3">User</div>
+          <div className="py-3 px-3">Actions</div>
         </div>
 
         <div className="border-b-2 border-gray-100"></div>

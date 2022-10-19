@@ -58,20 +58,19 @@ function UpdateForm({ event }) {
   };
 
   return (
-    <div className="grow rounded-md bg-gray-500 object-contain ">
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleSubmit({ name, description, occasion, date, time });
-
-          navigate("/my-events");
-        }}
-      >
-        <div className="p-4">
-          <div className="gap-6">
-            <div className="gap-1 text-gray-50">
+    <div className="flex justify-center">
+      <div className="max-w-md grow rounded-md bg-gray-500">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSubmit({ name, description, occasion, date, time });
+            navigate("/my-events");
+          }}
+        >
+          <div className="p-4">
+            <div className="text-gray-50">
               <h1>What is your event name </h1>
-              <div className="gap-2.5 py-2">
+              <div className="py-2">
                 <Input
                   type="text"
                   placeholder={"Event name"}
@@ -81,14 +80,10 @@ function UpdateForm({ event }) {
                 />
               </div>
             </div>
-            <div className="gap-1 text-gray-50">
+            <div className="text-gray-50">
               <h1>What is your event about?</h1>
-              <div className="gap-2.5 py-3">
+              <div className="py-3">
                 <TextArea
-                  name=""
-                  id=""
-                  cols="30"
-                  rows="10"
                   placeholder="Event description"
                   value={description}
                   onChange={(e) => setEventDescription(e.target.value)}
@@ -96,7 +91,7 @@ function UpdateForm({ event }) {
                 ></TextArea>
               </div>
             </div>
-            <div className="flex items-baseline gap-2 ">
+            <div className="items-baseline gap-2 space-y-3 md:flex">
               <div>
                 <Select options={options} setEventOccasion={setEventOccasion} />
               </div>
@@ -115,13 +110,13 @@ function UpdateForm({ event }) {
               </div>
             </div>
           </div>
-        </div>
-        <footer className="flex justify-end gap-2.5 rounded-b-md bg-gray-400 px-6 py-3">
-          <Button bg="bg-gray-500" className="text-white" type="submit">
-            Update
-          </Button>
-        </footer>
-      </form>
+          <footer className="flex justify-end gap-2.5 rounded-b-md bg-gray-400 px-6 py-3">
+            <Button bg="bg-gray-500" className="text-white" type="submit">
+              Update
+            </Button>
+          </footer>
+        </form>
+      </div>
     </div>
   );
 }

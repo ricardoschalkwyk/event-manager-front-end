@@ -9,11 +9,31 @@ import { gapi } from "gapi-script";
 
 import Button from "../../components/forms/Button";
 import Api from "../../api";
+
+const googleUrl = () => {
+  const options = {
+    client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID,
+    redirect_uri: `${location.origin}${
+      import.meta.env.VITE_GOOGLE_REDIRECT_URI
+    }`,
+    access_type: "offline",
+    response_type: "code",
+    prompt: "consent",
+    scope: [
+      "https://www.googleapis.com/auth/userinfo.email",
+      "https://www.googleapis.com/auth/userinfo.profile",
+    ].join(" "),
+  };
+
+  const query = new URLSearchParams(options);
+
+  return `https://accounts.google.com/o/oauth2/v2/auth?${query}`;
+};
+
 function SignInChoice() {
   const navigate = useNavigate();
 
   const [profile, setProfile] = useState({});
-  console.log(profile);
 
   const googleUser = profile;
 
@@ -23,8 +43,9 @@ function SignInChoice() {
 
   const [email, setEmail] = useState(profile.email);
 
-  const client_id =
-    "26061662701-q391ntrp908poon72g0gim86pcftfoej.apps.googleusercontent.com";
+  const client_id = import.meta.env.VITE_GOOGLE_CLIENT_ID;
+
+  console.log(import.meta.env);
 
   const onSignIn = async () => {
     try {
@@ -54,19 +75,21 @@ function SignInChoice() {
   //   });
   // }
 
-  const onSuccess = (res) => {
-    setProfile(res.profileObj);
-  };
+  // const onSuccess = (res) => {
+  //   setProfile(res.profileObj);
+  // };
 
-  const onFailure = (err) => {
-    console.log("failed:", err);
-  };
+  // const onFailure = (err) => {
+  //   console.log("failed:", err);
+  // };
 
   function handleResponse(response) {
     console.log(response.credential);
   }
 
   useEffect(() => {
+    console.log({ url: googleUrl() });
+
     const initClient = () => {
       gapi.client.init({
         clientId: client_id,
@@ -78,7 +101,7 @@ function SignInChoice() {
   }, []);
 
   return (
-    <div className="flex h-screen items-center justify-center">
+    <div className="flex h-screen items-center justify-center p-4">
       <div className="text-center">
         <div className="text-gray-700">
           <div className="pb-2 text-3xl font-bold">
@@ -87,7 +110,7 @@ function SignInChoice() {
           <div className="pb-4 text-sm">Sign in with the following:</div>
         </div>
         <div className="space-y-4">
-          <GoogleLogin
+          {/* <GoogleLogin
             className="w-full place-content-center"
             clientId={client_id}
             buttonText="Sign in with Google"
@@ -96,7 +119,11 @@ function SignInChoice() {
             cookiePolicy={"single_host_origin"}
             isSignedIn={true}
             onClick={() => onSignIn()}
-          />
+          /> */}
+
+          <div className="rounded-md bg-gray-100 p-2.5 text-black">
+            <a href={googleUrl()}>Sign in with Google</a>
+          </div>
 
           <Button
             bg="bg-blue-500"
