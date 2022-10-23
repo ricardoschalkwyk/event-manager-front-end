@@ -38,25 +38,23 @@ const UserEvent = ({ event, dispatch }) => {
       <div className="col-span-1">{event.date}</div>
 
       <div className="col-span-1 gap-2 md:flex">
-        <div>
-          <Button
-            className="font-normal text-white"
-            onClick={() => {
-              handleDelete();
-            }}
-          >
-            Remove
-          </Button>
-        </div>
-        <div className="">
-          <Button
-            onClick={() => {
-              navigate(`/admin/event/${event._id}/edit`);
-            }}
-          >
-            Update
-          </Button>
-        </div>
+        <Button
+          onClick={() => {
+            navigate(`/admin/event/${event._id}/edit`);
+          }}
+        >
+          Update
+        </Button>
+
+        <Button
+          bg="bg-red-600"
+          className="font-normal text-white"
+          onClick={() => {
+            handleDelete();
+          }}
+        >
+          Remove
+        </Button>
       </div>
     </>
   );

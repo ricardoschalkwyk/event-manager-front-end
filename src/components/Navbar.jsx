@@ -118,7 +118,7 @@ function Navbar() {
             E-Management
           </div>
 
-          <div className="shrink-0 rounded-3xl border-2 bg-gray-600 p-2 font-extrabold text-white md:hidden">
+          <div className="shrink-0 rounded-3xl border-2 bg-gray-600 p-2 text-white md:hidden">
             <Dropdown navigation={navigation} right>
               <div>Navigation</div>
             </Dropdown>
@@ -140,19 +140,13 @@ function Navbar() {
           ))}
         </div>
 
-        <div className="rounded-md border-2 border-double border-black bg-gray-300 p-1">
-          <Dropdown options={filteredOptions()} right>
-            <div className="flex items-center gap-4 text-gray-700 md:shrink-0">
-              <div className="hidden md:block">
-                {user.firstName} {user.lastName}
-              </div>
-
-              <div className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-gray-700 object-cover text-gray-300 md:hidden">
-                <div>{getFirstChar(user.firstName)}</div>
-              </div>
+        <Dropdown options={filteredOptions()} right>
+          <div className="flex items-center gap-4 text-gray-700">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-700 text-gray-300 ring-2 ring-orange-300">
+              <div>{getFirstChar(user.firstName)}</div>
             </div>
-          </Dropdown>
-        </div>
+          </div>
+        </Dropdown>
       </div>
     </div>
   );

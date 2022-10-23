@@ -6,10 +6,10 @@ import UserImages from "../../components/UserImages";
 
 const UserList = ({ user }) => {
   return (
-    <React.Fragment>
+    <>
       <div className="col-span-2 flex items-center gap-4 py-3 px-3">
         <div className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-gray-500 object-cover text-gray-800">
-          {<UserImages user={user.firstName} />}
+          <UserImages user={user.firstName} />
         </div>
         <div>
           <h3 className="text-white">
@@ -19,11 +19,12 @@ const UserList = ({ user }) => {
         </div>
       </div>
 
-      <div className="py-6">{user.role}</div>
-      <div className="flex items-center">
+      <div>{user.role}</div>
+
+      <div>
         <Link to={`/admin/users/${user._id}/edit`}>Edit</Link>
       </div>
-    </React.Fragment>
+    </>
   );
 };
 

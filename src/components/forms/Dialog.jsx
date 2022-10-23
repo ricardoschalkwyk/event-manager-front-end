@@ -21,7 +21,11 @@ export default function MyModal({ deleteUser }) {
   return (
     <>
       <div className="inset-0 flex items-center justify-center">
-        <Button type="button" onClick={() => openModal()}>
+        <Button
+          type="button"
+          onClick={() => openModal()}
+          className="bg-red-600"
+        >
           Remove User
         </Button>
       </div>

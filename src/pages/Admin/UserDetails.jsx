@@ -61,8 +61,10 @@ const UserDetails = () => {
   return (
     <>
       <div>
-        <div className="mx-auto w-96 rounded-md bg-gray-700">
-          <UserForm user={user} />
+        <div className="flex justify-center">
+          <div className="max-w-sm grow rounded-md bg-gray-700 md:max-w-3xl">
+            <UserForm user={user} />
+          </div>
         </div>
       </div>
 

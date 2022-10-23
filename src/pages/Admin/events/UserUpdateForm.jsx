@@ -56,7 +56,7 @@ function UserUpdateForm({ event }) {
   };
 
   return (
-    <div className="grow rounded-md bg-gray-500 object-contain">
+    <div className="rounded-md bg-gray-500">
       <form
         onSubmit={(e) => {
           e.preventDefault();

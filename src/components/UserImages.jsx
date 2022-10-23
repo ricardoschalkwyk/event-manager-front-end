@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const UserImages = ({ eventUser, user }) => {
+const UserImages = ({ user }) => {
   const getFirstChar = (str) => {
     const firstChars = str
       .split(" ")
@@ -11,15 +11,11 @@ const UserImages = ({ eventUser, user }) => {
     return firstChars;
   };
 
-  if (eventUser === undefined) {
-    return null;
-  }
-
   if (user === undefined) {
     return null;
   }
 
-  return <div>{getFirstChar(eventUser)}</div>;
+  return <div className="uppercase">{getFirstChar(user)}</div>;
 };
 
 UserImages.propTypes = {

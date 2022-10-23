@@ -9,16 +9,9 @@ function UserLayout() {
     if (!token) {
       navigate("/sign-in-choice");
     }
-    if (token) {
-      navigate("/");
-    }
   }, []);
 
-  return (
-    <div className="container mx-auto">
-      <Outlet />
-    </div>
-  );
+  return <Outlet />;
 }
 
 UserLayout.propTypes = {};

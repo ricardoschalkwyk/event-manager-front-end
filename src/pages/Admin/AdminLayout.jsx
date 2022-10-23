@@ -11,11 +11,7 @@ function AdminLayout() {
     }
   }, []);
 
-  return (
-    <div className="container mx-auto">
-      <Outlet />
-    </div>
-  );
+  return <Outlet />;
 }
 
 AdminLayout.propTypes = {};

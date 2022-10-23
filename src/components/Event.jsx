@@ -74,7 +74,7 @@ function Event({ edit = false, event, getEvents }) {
         {!edit ? (
           <div className="flex items-center gap-1 pt-1">
             <div className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-gray-700 object-cover">
-              <div>{<UserImages eventUser={event.user.firstName} />}</div>
+              <div>{<UserImages user={event.user.firstName} />}</div>
             </div>
 
             <div>
