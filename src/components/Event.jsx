@@ -113,8 +113,6 @@ Event.propTypes = {
   edit: PropTypes.bool,
   event: PropTypes.object,
   getEvents: PropTypes.func,
-  setUpdate: PropTypes.func,
-  setId: PropTypes.func,
 };
 
 export default Event;

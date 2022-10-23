@@ -56,7 +56,7 @@ const UsersPage = () => {
           text="text-white"
           onClick={() => navigate("/admin/events")}
         >
-          Events
+          Go To Events
         </Button>
       </div>
       <div className="rounded-md bg-gray-700">

@@ -5,6 +5,9 @@ import SignInChoice from "./pages/Sign-in & Sign-up/SignInChoice";
 import SignIn from "./pages/Sign-in & Sign-up/SignIn";
 import SignUp from "./pages/Sign-in & Sign-up/SignUp";
 
+import GoogleProcess from "./pages/Sign-in & Sign-up/GoogleProcess";
+import FacebookProcess from "./pages/Sign-in & Sign-up/FacebookProcess";
+
 import UsersPage from "./pages/Admin/UsersPage";
 import UserDetails from "./pages/Admin/UserDetails";
 import UserEditPage from "./pages/Admin/UserEditPage";
@@ -23,7 +26,6 @@ import Profile from "./pages/Non-Admin/Profile";
 import Api from "./api";
 
 import { eventAdd } from "./store/events";
-import GoogleProcess from "./pages/Sign-in & Sign-up/GoogleProcess";
 
 // Todo list
 
@@ -62,6 +64,7 @@ function App() {
       <Routes>
         {/* Routes will determine which component is shown */}
         <Route path="/auth/google" element={<GoogleProcess />} />
+        <Route path="/auth/facebook" element={<FacebookProcess />} />
 
         <Route path="/sign-in-choice" element={<SignInChoice />} />
 

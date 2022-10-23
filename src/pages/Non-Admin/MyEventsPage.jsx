@@ -52,16 +52,10 @@ function MyEventsPage({ getEvents }) {
                 </div>
               </div>
             </Button>
-            <div className="rounded-md ring-orange-300 hover:ring-4">
-              {events.map((event) => (
-                <Event
-                  edit
-                  key={event._id}
-                  event={event}
-                  getEvents={getEvents}
-                />
-              ))}
-            </div>
+
+            {events.map((event) => (
+              <Event edit key={event._id} event={event} getEvents={getEvents} />
+            ))}
           </div>
         </div>
       </div>

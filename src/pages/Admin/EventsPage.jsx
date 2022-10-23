@@ -50,7 +50,7 @@ const EventsPage = () => {
           text="text-white"
           onClick={() => navigate("/admin/users")}
         >
-          Users
+          Go To Users
         </Button>
       </div>
 
