@@ -15,6 +15,10 @@ export const eventsSlice = createSlice({
       state.data = action.payload;
     },
 
+    clearEvents: (state) => {
+      state.data = [];
+    },
+
     eventUser: (state, action) => {
       state.eventUser = action.payload;
     },
@@ -33,7 +37,7 @@ export const eventsSlice = createSlice({
   },
 });
 
-export const { eventAdd, eventEdit, removeEdit, idCollector } =
+export const { eventAdd, eventEdit, removeEdit, idCollector, clearEvents } =
   eventsSlice.actions;
 
 export default eventsSlice.reducer;

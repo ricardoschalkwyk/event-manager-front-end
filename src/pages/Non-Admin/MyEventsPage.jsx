@@ -1,14 +1,17 @@
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { ArrowPathIcon, PlusIcon } from "@heroicons/react/20/solid";
 
 import Button from "../../components/forms/Button";
 import Event from "../../components/Event";
+import { clearEvents } from "../../store/events";
 
 function MyEventsPage({ getEvents }) {
   const events = useSelector((state) => state.events.data);
+
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -17,6 +20,10 @@ function MyEventsPage({ getEvents }) {
     getEvents().then(() => {
       setIsLoading(true);
     });
+
+    return () => {
+      dispatch(clearEvents());
+    };
   }, [isLoading]);
 
   if (!isLoading) {

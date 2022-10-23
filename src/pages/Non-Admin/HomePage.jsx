@@ -8,7 +8,7 @@ import { ArrowPathIcon, PlusIcon } from "@heroicons/react/20/solid";
 import Event from "../../components/Event";
 import Button from "../../components/forms/Button";
 import EventDialog from "../../components/forms/EventDialog";
-import { idCollector } from "../../store/events";
+import { clearEvents, idCollector } from "../../store/events";
 
 function HomePage({ getUserEvents }) {
   // Events are kept in the events redux store
@@ -25,13 +25,13 @@ function HomePage({ getUserEvents }) {
 
   useEffect(() => {
     // set transitions for loading state
-    setTimeout(() => {
+    getUserEvents().then(() => {
       setIsLoading(true);
-    }, 150);
+    });
 
-    // Get events on first render
-    getUserEvents();
-    return () => {};
+    return () => {
+      dispatch(clearEvents());
+    };
   }, []);
 
   // What is shown when loading state is true
