@@ -43,7 +43,7 @@ function MembersList({ listing, setIsJoined, getEvent }) {
 
         <div className="border-b-2 border-gray-100"></div>
 
-        <div>
+        <div className="max-h-32 overflow-y-auto">
           {listing.length === 0 ? (
             <div className="flex items-center justify-center pt-4">
               No current members

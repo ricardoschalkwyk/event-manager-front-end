@@ -65,12 +65,6 @@ function CreationForm() {
         onSubmit={(e) => {
           e.preventDefault();
           handleSubmit({ name, description, occasion, date, time });
-
-          setEventName("");
-          setEventDescription("");
-          setEventOccasion("");
-          setEventDate("");
-          setEventTime("");
         }}
       >
         <div className="p-4">

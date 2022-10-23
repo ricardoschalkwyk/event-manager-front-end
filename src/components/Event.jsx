@@ -55,7 +55,7 @@ function Event({ edit = false, event, getEvents }) {
       )}
 
       <div className="flex justify-end pt-1.5">
-        <div className="rounded bg-gray-300 py-0.5 px-1 text-[8px]">
+        <div className="rounded bg-gray-300 py-0.5 px-1 text-xs">
           <div className="flex items-center gap-1 divide-x divide-gray-400">
             <div className="flex items-center gap-1">
               {event.date} <CalendarIcon className="h-2.5 w-2.5" />

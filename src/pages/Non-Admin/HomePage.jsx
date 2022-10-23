@@ -12,10 +12,7 @@ import { clearEvents, idCollector } from "../../store/events";
 
 function HomePage({ getUserEvents }) {
   // Events are kept in the events redux store
-  const events = useSelector((state) => state.events.data);
-
-  // Loading state
-  const [isLoading, setIsLoading] = useState(false);
+  const { data, loading } = useSelector((state) => state.events);
 
   // Controls the modal
   let [isOpen, setIsOpen] = useState(false);
@@ -24,10 +21,7 @@ function HomePage({ getUserEvents }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // set transitions for loading state
-    getUserEvents().then(() => {
-      setIsLoading(true);
-    });
+    getUserEvents();
 
     return () => {
       dispatch(clearEvents());
@@ -35,17 +29,12 @@ function HomePage({ getUserEvents }) {
   }, []);
 
   // What is shown when loading state is true
-  if (!isLoading) {
+  if (loading) {
     return (
       <div className="flex items-center justify-center">
         <ArrowPathIcon className="h-24 w-24 animate-spin" />
       </div>
     );
-  }
-
-  // Checks if events exist
-  if (!events.length) {
-    return null;
   }
 
   return (
@@ -59,9 +48,8 @@ function HomePage({ getUserEvents }) {
         }}
       >
         <div className="w-full">
-          {isLoading && <div className="text-center">Create Event</div>}
+          <div className="text-center">Create Event</div>
           <div className="border-b-2 border-gray-100 pt-1.5"></div>
-
           <div className="flex items-center justify-center pt-5">
             <PlusIcon className="h-24 w-24 text-black" />
           </div>
@@ -69,7 +57,7 @@ function HomePage({ getUserEvents }) {
       </Button>
 
       {/* Mapping events for homepage render */}
-      {events.map((event) => (
+      {data.map((event) => (
         <button
           key={event._id}
           className="rounded-md ring-orange-300 hover:ring-4"

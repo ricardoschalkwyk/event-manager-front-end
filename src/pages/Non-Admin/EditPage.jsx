@@ -42,11 +42,9 @@ function EditPage({ setEvents }) {
   }
 
   return (
-    <div className="container mx-auto">
-      <div className="flex gap-16">
-        <div className="grow">
-          <UpdateForm setEvents={setEvents} event={event} />
-        </div>
+    <div className="flex justify-center gap-16">
+      <div className="max-w-sm grow md:max-w-3xl">
+        <UpdateForm setEvents={setEvents} event={event} />
       </div>
     </div>
   );
