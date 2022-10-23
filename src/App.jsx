@@ -1,12 +1,12 @@
 import { Route, Routes } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import SignInChoice from "./pages/Sign-in & Sign-up/SignInChoice";
-import SignIn from "./pages/Sign-in & Sign-up/SignIn";
-import SignUp from "./pages/Sign-in & Sign-up/SignUp";
+import SignInChoice from "./pages/sign-in-sign-up/SignInChoice";
+import SignIn from "./pages/sign-in-sign-up/SignIn";
+import SignUp from "./pages/sign-in-sign-up/SignUp";
 
-import GoogleProcess from "./pages/Sign-in & Sign-up/GoogleProcess";
-import FacebookProcess from "./pages/Sign-in & Sign-up/FacebookProcess";
+import GoogleProcess from "./pages/sign-in-sign-up/GoogleProcess";
+import FacebookProcess from "./pages/sign-in-sign-up/FacebookProcess";
 
 import UsersPage from "./pages/Admin/UsersPage";
 import UserDetails from "./pages/Admin/UserDetails";
@@ -76,7 +76,7 @@ function App() {
           <Route element={<UserLayout />}>
             <Route
               index
-              path="/home"
+              path="/"
               element={<HomePage getUserEvents={getUserEvents} />}
             />
             <Route path="/create" element={<CreatePage />} />

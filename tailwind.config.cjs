@@ -2,7 +2,12 @@
 module.exports = {
   content: ["./src/**/*.{html,js,jsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        google: "#DB4437",
+        facebook: "#4267B2",
+      },
+    },
   },
   plugins: ["@tailwindcss/forms"],
 };

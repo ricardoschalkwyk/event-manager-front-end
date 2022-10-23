@@ -15,8 +15,8 @@ function SignIn() {
   const dispatch = useDispatch();
 
   // These two states hold the input values
-  const [email, setEmail] = useState("Fiona.Lehner@hotmail.com");
-  const [password, setPassword] = useState("qwerty");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -49,7 +49,7 @@ function SignIn() {
 
       dispatch(login(newSignIn.user));
 
-      navigate("/home");
+      navigate("/");
     } catch (error) {
       setIsLoading(false);
       setErrorMessage(error.message);
@@ -63,7 +63,7 @@ function SignIn() {
   // It will only navigate if a token is valid
   useEffect(() => {
     if (token) {
-      navigate("/home");
+      navigate("/");
     }
   }, [token]);
 

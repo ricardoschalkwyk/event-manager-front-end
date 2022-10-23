@@ -8,7 +8,7 @@ import Dropdown from "./Dropdown";
 
 const routes = [
   {
-    path: "/home",
+    path: "/",
     name: "Home",
   },
   {
@@ -60,7 +60,7 @@ function Navbar() {
       text: "Home",
       roles: ["Admin", "User"],
       onClick: () => {
-        navigate("/home");
+        navigate("/");
       },
     },
 
@@ -111,7 +111,7 @@ function Navbar() {
   }
 
   return (
-    <div className="rounded-2xl bg-gray-600 px-4 py-3.5 text-center md:mx-2 md:px-8">
+    <div className="rounded-2xl bg-gray-600 px-4 py-3.5 text-center md:px-8">
       <div className="flex items-center justify-between font-medium">
         <div className="flex items-center gap-4 text-gray-300 md:pr-6">
           <div className="shrink-0 rounded-3xl border-2 bg-orange-300 p-2 font-extrabold text-white">

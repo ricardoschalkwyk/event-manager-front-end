@@ -10,7 +10,7 @@ function UserLayout() {
       navigate("/sign-in-choice");
     }
     if (token) {
-      navigate("/home");
+      navigate("/");
     }
   }, []);
 

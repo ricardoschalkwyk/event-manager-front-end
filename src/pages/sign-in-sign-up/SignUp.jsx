@@ -56,10 +56,8 @@ function SignUp() {
   return (
     <div className="flex h-screen items-center justify-center p-4">
       <div className="rounded-2xl bg-gray-700 p-10 text-center">
-        <div className="text-white">
-          <div className="pb-4 text-4xl font-extrabold">
-            Sign up to Event Management!
-          </div>
+        <div className="mb-8 text-gray-300">
+          <div className="text-3xl font-bold">Sign up to Event Management!</div>
         </div>
 
         <form

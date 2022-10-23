@@ -41,7 +41,7 @@ const UsersPage = () => {
 
   useEffect(() => {
     if (user.role !== "Admin") {
-      navigate("/home");
+      navigate("/");
     }
 
     getUsers();

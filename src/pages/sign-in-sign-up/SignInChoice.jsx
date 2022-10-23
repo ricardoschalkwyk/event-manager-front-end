@@ -77,18 +77,18 @@ function SignInChoice() {
           <div className="pb-4 text-sm">Sign in with the following:</div>
         </div>
         <div className="space-y-4">
-          <div className="rounded-md bg-gray-100 p-2.5 text-black">
+          <div className="flex items-center justify-center gap-2 rounded-md bg-google p-2.5 text-white">
             <FontAwesomeIcon icon={faGoogle} />
             <a href={googleUrl()}>Sign in with Google</a>
           </div>
 
-          <div className="rounded-md bg-gray-100 p-2.5 text-black">
+          <div className="flex items-center justify-center gap-2 rounded-md bg-facebook p-2.5 text-white">
             <FontAwesomeIcon icon={faFacebook} />
-            <a href={facebookUrl()}>Sign in with facebook</a>
+            <a href={facebookUrl()}>Sign in with Facebook</a>
           </div>
 
           <Link
-            className="flex w-full place-content-center space-x-1 rounded-sm bg-gray-500 p-2.5 text-white shadow-sm shadow-slate-500"
+            className="flex w-full place-content-center gap-2 rounded-sm bg-gray-500 p-2.5 text-white shadow-sm shadow-slate-500"
             to="/sign-in"
             as={NavLink}
           >
@@ -96,7 +96,7 @@ function SignInChoice() {
               <FontAwesomeIcon icon={faEnvelope} />
             </div>
 
-            <div>Email</div>
+            <div>Sign in with Email</div>
           </Link>
         </div>
       </div>

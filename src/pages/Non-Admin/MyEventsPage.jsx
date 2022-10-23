@@ -14,11 +14,9 @@ function MyEventsPage({ getEvents }) {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => {
+    getEvents().then(() => {
       setIsLoading(true);
-    }, 150);
-
-    getEvents();
+    });
   }, [isLoading]);
 
   if (!isLoading) {
