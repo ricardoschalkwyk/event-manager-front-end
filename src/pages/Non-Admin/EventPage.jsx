@@ -153,10 +153,6 @@ function EventPage({ closeModal }) {
           </div>
 
           <div className="flex gap-2">
-            <Button bg="bg-white" className="text-gray-900">
-              Members
-            </Button>
-
             {event.user === user._id && (
               <Button
                 onClick={() => {

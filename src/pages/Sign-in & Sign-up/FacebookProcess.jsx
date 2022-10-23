@@ -5,6 +5,7 @@ import { login } from "../../store/auth";
 
 import Api from "../../api";
 import { useRef } from "react";
+import { ArrowPathIcon } from "@heroicons/react/24/solid";
 
 const FacebookProcess = () => {
   const dispatch = useDispatch();
@@ -39,8 +40,11 @@ const FacebookProcess = () => {
   }, []);
 
   return (
-    <div className="flex h-screen items-center justify-center gap-1">
-      <div>Talking to facebook</div>
+    <div>
+      <div>Talking to google</div>
+      <div>
+        <ArrowPathIcon className="h-5 w-5 animate-spin" />
+      </div>
     </div>
   );
 };

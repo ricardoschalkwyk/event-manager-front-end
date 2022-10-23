@@ -5,6 +5,7 @@ import { login } from "../../store/auth";
 
 import Api from "../../api";
 import { useRef } from "react";
+import { ArrowPathIcon } from "@heroicons/react/20/solid";
 
 const GoogleProcess = () => {
   const dispatch = useDispatch();
@@ -38,7 +39,14 @@ const GoogleProcess = () => {
     }
   }, []);
 
-  return <div>Talking to google</div>;
+  return (
+    <div className="flex h-screen items-center justify-center gap-1">
+      <div>Talking to google</div>
+      <div>
+        <ArrowPathIcon className="h-5 w-5 animate-spin" />
+      </div>
+    </div>
+  );
 };
 
 export default GoogleProcess;
