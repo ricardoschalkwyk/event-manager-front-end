@@ -43,8 +43,7 @@ function UserUpdateForm({ event }) {
 
   const handleSubmit = async (data) => {
     try {
-      // POST request
-      // This sends the post request
+      // This sends the put request
       await Api.put(`/events/${event._id}`, data);
 
       const res = await Api.get("/admin/users");
@@ -65,52 +64,52 @@ function UserUpdateForm({ event }) {
           navigate("/admin/users");
         }}
       >
+        {/* All input values are take and given to the handleSignUp where the request
+            will be fired */}
         <div className="p-4">
-          <div className="">
-            <div className="text-gray-50">
-              <h1>What is your event name </h1>
-              <div className="py-2">
-                <Input
-                  type="text"
-                  placeholder={"Event name"}
-                  value={name}
-                  onChange={(e) => setEventName(e.target.value)}
-                  className="text-black"
-                />
-              </div>
+          <div className="text-gray-50">
+            <h1>What is your event name </h1>
+            <div className="py-2">
+              <Input
+                type="text"
+                placeholder={"Event name"}
+                value={name}
+                onChange={(e) => setEventName(e.target.value)}
+                className="text-black"
+              />
             </div>
-            <div className="text-gray-50">
-              <h1>What is your event about?</h1>
-              <div className="py-3">
-                <TextArea
-                  name=""
-                  id=""
-                  cols="30"
-                  rows="10"
-                  placeholder="Event description"
-                  value={description}
-                  onChange={(e) => setEventDescription(e.target.value)}
-                  className="h-20"
-                ></TextArea>
-              </div>
+          </div>
+          <div className="text-gray-50">
+            <h1>What is your event about?</h1>
+            <div className="py-3">
+              <TextArea
+                name=""
+                id=""
+                cols="30"
+                rows="10"
+                placeholder="Event description"
+                value={description}
+                onChange={(e) => setEventDescription(e.target.value)}
+                className="h-20"
+              ></TextArea>
             </div>
-            <div className="flex items-baseline gap-2">
-              <div>
-                <Select options={options} setEventOccasion={setEventOccasion} />
-              </div>
-              <div>
-                <Date
-                  value={date}
-                  onChange={(e) => setEventDate(e.target.value)}
-                />
-              </div>
-              <div>
-                <Time
-                  type="time"
-                  value={time}
-                  onChange={(e) => setEventTime(e.target.value)}
-                />
-              </div>
+          </div>
+          <div className="flex items-baseline gap-2">
+            <div>
+              <Select options={options} setEventOccasion={setEventOccasion} />
+            </div>
+            <div>
+              <Date
+                value={date}
+                onChange={(e) => setEventDate(e.target.value)}
+              />
+            </div>
+            <div>
+              <Time
+                type="time"
+                value={time}
+                onChange={(e) => setEventTime(e.target.value)}
+              />
             </div>
           </div>
         </div>

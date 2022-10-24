@@ -7,6 +7,7 @@ import Api from "../../api";
 import { useRef } from "react";
 import { ArrowPathIcon } from "@heroicons/react/24/solid";
 
+// This function is called once consent is given on sign-in
 const FacebookProcess = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -17,11 +18,13 @@ const FacebookProcess = () => {
   async function sendToFacebook() {
     try {
       loading.current = true;
+
+      // This query will hold the params and data that is requested for the backend
       const query = new URLSearchParams(search);
 
-      // This gets fired once the page is ready
       const newSignIn = await Api.get(`/auth/facebook-sign-in?${query}`);
 
+      // Once signed in the token and data is saved to local storage
       localStorage.setItem("token", newSignIn.token);
       localStorage.setItem("user", JSON.stringify(newSignIn.user));
 

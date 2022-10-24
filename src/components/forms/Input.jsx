@@ -2,8 +2,10 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 
 // This component is for a dynamic input component.
+// This component is reusable
 
 function Input({
+  // Props are set to default values for repeated use
   className = "",
   type = "text",
   onChange,

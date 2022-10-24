@@ -14,17 +14,17 @@ import ErrorMessage from "../../components/forms/ErrorMessage";
 function SignIn() {
   const dispatch = useDispatch();
 
+  // This gets the token from local storage
+  const token = localStorage.getItem("token");
+
   // These two states hold the input values
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // This state is for the loading animation
   const [isLoading, setIsLoading] = useState(false);
 
-  // This gets the token from local storage
-  const token = localStorage.getItem("token");
-
   const [error, setError] = useState(false);
-
   const [errorMessage, setErrorMessage] = useState("");
 
   const navigate = useNavigate();
@@ -42,13 +42,14 @@ function SignIn() {
         password,
       });
 
-      // Then if it does exist the token given to a user when logging in will
-      // be saved to localStorage
+      // Then if it does exist the token is given to a user when logged in
+      // Then it will be saved to localStorage
       localStorage.setItem("token", newSignIn.token);
       localStorage.setItem("user", JSON.stringify(newSignIn.user));
 
       dispatch(login(newSignIn.user));
 
+      // Navigate is called to after the process
       navigate("/");
     } catch (error) {
       setIsLoading(false);
@@ -88,6 +89,8 @@ function SignIn() {
             </div>
           )}
           <div className="space-y-2">
+            {/* All input values are taken and given to the newSignIn function for the
+            request to be fired */}
             <div>
               <Input
                 icon={<EnvelopeIcon className="h-4 w-4 text-gray-400" />}

@@ -59,6 +59,8 @@ const UserForm = ({ user }) => {
         handleSubmit({ firstName, lastName, email, password });
       }}
     >
+      {/* All input values are take and given to the handleSignUp where the request
+          will be fired */}
       <div className="grid grid-cols-2 grid-rows-2 gap-4 text-black">
         <div className="pl-4 pt-4">
           <Input

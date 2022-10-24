@@ -5,7 +5,7 @@ import Link from "../../components/Link";
 
 const EventList = ({ event }) => {
   return (
-    <React.Fragment>
+    <>
       <div className="col-span-1 flex items-center gap-4 py-3 px-3">
         <div>
           <p className="text-white">{event.occasion}</p>
@@ -14,6 +14,7 @@ const EventList = ({ event }) => {
       </div>
 
       <div className="col-span-1 flex items-center gap-4 py-3 px-3">
+        {/* Counts the length of the members list of an event */}
         <div>count: {event.members.length}</div>
       </div>
 
@@ -24,7 +25,7 @@ const EventList = ({ event }) => {
       <div className="flex items-center">
         <Link to={`/admin/users/${event.user._id}/edit`}>Edit</Link>
       </div>
-    </React.Fragment>
+    </>
   );
 };
 

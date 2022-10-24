@@ -4,10 +4,11 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
 
-import { gapi } from "gapi-script";
-
+// Google sign-in
 const googleUrl = () => {
+  // This sets options for the query
   const options = {
+    // Client id given from the google api
     client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID,
     redirect_uri: `${location.origin}${
       import.meta.env.VITE_GOOGLE_REDIRECT_URI
@@ -15,57 +16,44 @@ const googleUrl = () => {
     access_type: "offline",
     response_type: "code",
     prompt: "consent",
+
+    // Scopes sets the data that I want from the api
     scope: [
       "https://www.googleapis.com/auth/userinfo.email",
       "https://www.googleapis.com/auth/userinfo.profile",
     ].join(" "),
   };
 
+  // Options are given to query to set params within the request
   const query = new URLSearchParams(options);
 
   return `https://accounts.google.com/o/oauth2/v2/auth?${query}`;
 };
 
-// do dis
-
+// Facebook sign-in
 const facebookUrl = () => {
+  // This sets options for the query
   const options = {
+    // Client id given from the google api
     client_id: import.meta.env.VITE_FACEBOOK_CLIENT_ID,
     redirect_uri: `${location.origin}${
       import.meta.env.VITE_FACEBOOK_REDIRECT_URI
     }`,
-
     response_type: "code",
     state: "321cba",
+
+    // Scopes sets the data that I want from the api
     scope: ["email", "public_profile"].join(" "),
   };
 
+  // Options are given to query to set params within the request
   const query = new URLSearchParams(options);
 
   return `https://www.facebook.com/v15.0/dialog/oauth?${query}`;
 };
 
 function SignInChoice() {
-  const client_id = import.meta.env.VITE_GOOGLE_CLIENT_ID;
-
-  console.log(import.meta.env);
-
-  function handleResponse(response) {
-    console.log(response.credential);
-  }
-
-  useEffect(() => {
-    console.log({ url: googleUrl() });
-
-    const initClient = () => {
-      gapi.client.init({
-        clientId: client_id,
-        callback: handleResponse,
-        scope: "",
-      });
-    };
-    gapi.load("client:auth2", initClient);
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <div className="flex h-screen items-center justify-center p-4">

@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,9 +8,8 @@ import Api from "../../api";
 
 import { eventEdit, removeEdit } from "../../store/events";
 
-function EditPage({ setEvents }) {
+function EditPage() {
   const event = useSelector((state) => state.events.edit);
-  console.log(event);
 
   const dispatch = useDispatch();
   const params = useParams();
@@ -44,13 +42,10 @@ function EditPage({ setEvents }) {
   return (
     <div className="flex justify-center gap-16">
       <div className="max-w-sm grow md:max-w-3xl">
-        <UpdateForm setEvents={setEvents} event={event} />
+        <UpdateForm event={event} />
       </div>
     </div>
   );
 }
 
-EditPage.propTypes = {
-  setEvents: PropTypes.array,
-};
 export default EditPage;

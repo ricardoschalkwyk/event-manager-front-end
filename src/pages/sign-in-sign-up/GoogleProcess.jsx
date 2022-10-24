@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { login } from "../../store/auth";
-
-import Api from "../../api";
 import { useRef } from "react";
 import { ArrowPathIcon } from "@heroicons/react/20/solid";
 
+import { login } from "../../store/auth";
+import Api from "../../api";
+
+// This function is called once consent is given on sign-in
 const GoogleProcess = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -17,9 +18,11 @@ const GoogleProcess = () => {
   async function sendToGoogle() {
     try {
       loading.current = true;
+
+      // This query will hold the params and data that is requested for the backend
       const query = new URLSearchParams(search);
 
-      // This gets fired once the page is ready
+      // Once signed in the token and data is saved to local storage
       const newSignIn = await Api.get(`/auth/google-sign-in?${query}`);
 
       localStorage.setItem("token", newSignIn.token);

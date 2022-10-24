@@ -27,22 +27,18 @@ import Api from "./api";
 
 import { eventAdd } from "./store/events";
 
-// Todo list
-
-// Mobile prep on UI // Test animations on buttons //
-
 function App() {
   // Dispatch actions/mutations
   const dispatch = useDispatch();
-  // Select store data to use inside the components
 
+  // This request searches for user specific events
   async function getEvents() {
     try {
       // This gets fired once the page is ready
       const response = await Api.get("/events");
 
+      // Adds the response to the redux store
       dispatch(eventAdd(response));
-      console.log(response);
     } catch (error) {
       console.log(error);
     }
@@ -53,6 +49,7 @@ function App() {
       // This gets fired once the page is ready
       const response = await Api.get("/events/all");
 
+      // Adds the response to the redux store
       dispatch(eventAdd(response));
     } catch (error) {
       console.log(error);
@@ -63,6 +60,7 @@ function App() {
     <div>
       <Routes>
         {/* Routes will determine which component is shown */}
+        {/* Based on the route set to component */}
         <Route path="/auth/google" element={<GoogleProcess />} />
         <Route path="/auth/facebook" element={<FacebookProcess />} />
 
@@ -72,7 +70,9 @@ function App() {
 
         <Route path="/sign-up" element={<SignUp />} />
 
+        {/* This Layout sets the navbar and container on every page */}
         <Route element={<Layout />}>
+          {/* Layout for user side */}
           <Route element={<UserLayout />}>
             <Route
               index
@@ -88,6 +88,7 @@ function App() {
             />
           </Route>
 
+          {/* Layout for Admin side */}
           <Route element={<AdminLayout />}>
             <Route path="/admin">
               <Route path="users" element={<UsersPage />} />

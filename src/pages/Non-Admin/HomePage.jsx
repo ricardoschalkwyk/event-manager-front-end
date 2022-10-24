@@ -62,12 +62,12 @@ function HomePage({ getUserEvents }) {
           key={event._id}
           className="rounded-md ring-orange-300 hover:ring-4"
           onClick={() => {
-            // onClick adds eventId to state
+            // onClick adds eventId to redux store
             dispatch(idCollector(event._id));
             setIsOpen(true);
           }}
         >
-          <Event event={event} getUserEvents={getUserEvents} />
+          <Event event={event} />
         </button>
       ))}
 

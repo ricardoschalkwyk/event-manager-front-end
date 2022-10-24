@@ -1,8 +1,7 @@
 import { Listbox, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
-import PropTypes from "prop-types";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/24/solid";
-
+import PropTypes from "prop-types";
 function Select({ options = [], setEventOccasion }) {
   const [selected, setSelected] = useState(options[0]);
 

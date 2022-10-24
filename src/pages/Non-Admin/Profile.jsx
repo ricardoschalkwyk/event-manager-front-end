@@ -48,6 +48,8 @@ const Profile = () => {
               handleSubmit({ firstName, lastName, email, password });
             }}
           >
+            {/* All input values are take and given to the handleSignUp where the request
+                will be fired */}
             <div className="pb-3">
               <span>First name</span>
               <Input

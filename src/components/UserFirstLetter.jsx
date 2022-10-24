@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const UserImages = ({ user }) => {
+const UserFirstLetter = ({ user }) => {
+  // This finds the first words and the first letter of that word
   const getFirstChar = (str) => {
     const firstChars = str
       .split(" ")
@@ -15,12 +16,13 @@ const UserImages = ({ user }) => {
     return null;
   }
 
+  // Then it will display that letter
   return <div className="uppercase">{getFirstChar(user)}</div>;
 };
 
-UserImages.propTypes = {
+UserFirstLetter.propTypes = {
   eventUser: PropTypes.string,
   user: PropTypes.string,
 };
 
-export default UserImages;
+export default UserFirstLetter;

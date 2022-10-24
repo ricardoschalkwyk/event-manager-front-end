@@ -11,7 +11,7 @@ import PropTypes from "prop-types";
 import Api from "../api";
 
 import Button from "./forms/Button";
-import UserImages from "./UserImages";
+import UserFirstLetter from "./UserFirstLetter";
 
 // This sets the max length of a sentence within an event card
 let MAX_LENGTH = 99;
@@ -32,7 +32,7 @@ function Event({ edit = false, event, getEvents }) {
       // Makes delete request
       await Api.delete(`/events/${event._id}`);
 
-      // Then makes a Get request after to get to output
+      // Then makes a Get request after to get to data
       getEvents();
     } catch (error) {
       console.log(error);
@@ -71,10 +71,11 @@ function Event({ edit = false, event, getEvents }) {
       <div className="border-b-2 border-gray-100 pt-1.5"></div>
 
       <div className="flex items-center justify-start gap-4 pt-1.5 text-gray-300">
+        {/* Determines the set elements based on which value edit has*/}
         {!edit ? (
           <div className="flex items-center gap-1 pt-1">
             <div className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-gray-700 object-cover">
-              <div>{<UserImages user={event.user.firstName} />}</div>
+              <div>{<UserFirstLetter user={event.user.firstName} />}</div>
             </div>
 
             <div>
@@ -98,6 +99,7 @@ function Event({ edit = false, event, getEvents }) {
               onClick={() => {
                 handleDelete();
               }}
+              bg="bg-red-600"
             >
               <TrashIcon className="h-4 w-4" />
               Remove

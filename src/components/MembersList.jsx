@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import UserFirstLetter from "./UserFirstLetter";
 import Api from "../api";
 
 import Button from "./forms/Button";
@@ -11,15 +12,6 @@ function MembersList({ listing, setIsJoined, getEvent }) {
   const eventId = useSelector((state) => state.events.eventId);
 
   const user = useSelector((state) => state.auth.user);
-
-  const getFirstChar = (str = "") => {
-    const firstChars = str
-      .split(" ")
-      .map((word) => word[0])
-      .join("");
-
-    return firstChars;
-  };
 
   const handleRemove = async () => {
     try {
@@ -53,7 +45,7 @@ function MembersList({ listing, setIsJoined, getEvent }) {
               <div key={item._id} className="pt-2">
                 <div className="flex gap-2">
                   <div className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-gray-700 object-cover text-gray-200">
-                    {getFirstChar(item.firstName)}
+                    {<UserFirstLetter user={item.firstName} />}
                   </div>
 
                   <div className="flex items-center justify-center gap-16">

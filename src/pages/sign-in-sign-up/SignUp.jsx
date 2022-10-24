@@ -7,25 +7,18 @@ import Button from "../../components/forms/Button";
 import Input from "../../components/forms/Input";
 
 function SignUp() {
+  const navigate = useNavigate();
+
   // These four states hold the input values
   const [firstName, setFirstName] = useState("");
-
   const [lastName, setLastName] = useState("");
-
   const [email, setEmail] = useState("");
-
   const [password, setPassword] = useState("");
-
-  const [confirmPassword, setConfirmPassword] = useState("");
-  //
 
   const [isLoading, setIsLoading] = useState(false);
 
   const [error, setError] = useState(false);
-
   const [errorMessage, setErrorMessage] = useState("");
-
-  const navigate = useNavigate();
 
   const handleSignUp = async (firstName, lastName, email, password) => {
     try {
@@ -49,7 +42,6 @@ function SignUp() {
       setLastName("");
       setEmail("");
       setPassword("");
-      setConfirmPassword("");
     }
   };
 
@@ -74,6 +66,8 @@ function SignUp() {
               </div>
             )}
 
+            {/* All input values are take and given to the handleSignUp where the request
+                will be fired */}
             <div className="flex">
               <div className="mt-1 mr-4 w-full space-y-2">
                 <Input
@@ -113,15 +107,6 @@ function SignUp() {
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
-
-            <div className="mt-1 space-y-2 pt-3">
-              <Input
-                type="password"
-                placeholder="Confirm password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
               />
             </div>
 

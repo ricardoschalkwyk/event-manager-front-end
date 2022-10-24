@@ -9,7 +9,9 @@ import Api from "../../api";
 import MembersList from "../../components/MembersList";
 import Button from "../../components/forms/Button";
 
-import { eventEdit } from "../../store/events";
+import { eventEdit, removeEdit } from "../../store/events";
+
+import { XMarkIcon } from "@heroicons/react/20/solid";
 
 function EventPage({ closeModal }) {
   const event = useSelector((state) => state.events.edit);
@@ -69,6 +71,10 @@ function EventPage({ closeModal }) {
 
   useEffect(() => {
     getEvent();
+
+    return () => {
+      dispatch(removeEdit());
+    };
   }, []);
 
   if (!event) {
@@ -79,8 +85,22 @@ function EventPage({ closeModal }) {
     <div className="justify-center gap-16 md:m-2">
       <div className="grow rounded-md bg-gray-500">
         {/* event creator */}
-        <div className="flex gap-2.5 p-2 text-gray-900">
-          Creator: <div className="text-gray-50">Benjamin bens</div>
+        <div className="flex justify-between">
+          <div className="flex gap-2.5 p-2 text-gray-900">
+            Creator: <div className="text-gray-50">Benjamin bens</div>
+          </div>
+
+          <Button
+            onClick={() => {
+              closeModal();
+            }}
+            bg="bg-gray-200"
+            rounded="rounded-bl-md"
+            className="text-red-500 ring-1 ring-gray-200"
+            padding="px-1 py-1"
+          >
+            <XMarkIcon className="h-8 w-8" />
+          </Button>
         </div>
 
         <div className="pt-4">
@@ -117,17 +137,6 @@ function EventPage({ closeModal }) {
         </div>
 
         <div className="mt-6 flex items-center justify-between rounded-b-md bg-gray-400 p-3">
-          <Button
-            onClick={() => {
-              closeModal();
-            }}
-            bg="bg-white"
-            className="text-gray-900"
-            padding="px-4 py-2"
-          >
-            Close
-          </Button>
-
           <div>
             {!joined ? (
               <Button
@@ -153,6 +162,7 @@ function EventPage({ closeModal }) {
           </div>
 
           <div className="flex gap-2">
+            {/* Checks if the event belongs to the logged in user */}
             {event.user === user._id && (
               <Button
                 onClick={() => {

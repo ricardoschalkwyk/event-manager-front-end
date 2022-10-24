@@ -19,12 +19,14 @@ function UpdateForm({ event }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  // Presets existing data for the chosen event
   const [name, setEventName] = useState(event.name);
   const [description, setEventDescription] = useState(event.description);
   const [occasion, setEventOccasion] = useState(event.occasion);
   const [date, setEventDate] = useState(event.date);
   const [time, setEventTime] = useState(event.time);
 
+  // Sets options for dropdown
   const options = [
     {
       id: 1,
@@ -45,12 +47,12 @@ function UpdateForm({ event }) {
 
   const handleSubmit = async (data) => {
     try {
-      // POST request
-      // This sends the post request
+      // This sends the put request
       await Api.put(`/events/${event._id}`, data);
 
       const res = await Api.get("/events");
 
+      // Updated data it sent to the redux store
       dispatch(eventAdd(res));
     } catch (error) {
       console.log(error);
@@ -66,6 +68,8 @@ function UpdateForm({ event }) {
           navigate("/my-events");
         }}
       >
+        {/* All input values are take and given to the handleSignUp where the request
+            will be fired */}
         <div className="p-4">
           <div className="text-gray-50">
             <h1>What is your event name </h1>

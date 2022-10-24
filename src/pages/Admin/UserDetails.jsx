@@ -10,9 +10,7 @@ import UserEvent from "./UserEvent";
 import { userEdit, removeEdit, eventAdd } from "../../store/users";
 
 const UserDetails = () => {
-  const { edit: user, events: userEvents } = useSelector(
-    (state) => state.users
-  );
+  const { user, userEvents } = useSelector((state) => state.users);
 
   const dispatch = useDispatch();
   const params = useParams();

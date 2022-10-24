@@ -4,8 +4,10 @@ import PropTypes from "prop-types";
 import { ArrowPathIcon } from "@heroicons/react/24/solid";
 
 // This component is for a dynamic Button component.
+// // This component is reusable
 
 function Button({
+  // Props are set to default values for repeated use
   className = "",
   children,
   type = "button",
@@ -15,16 +17,18 @@ function Button({
   bg = "bg-gray-800",
   text = "text-white",
   padding = "py-2 px-4",
+  rounded = "rounded-md",
 }) {
   return (
     <button
       type={type}
       disabled={disabled}
       className={clsx(
-        "flex items-center justify-center gap-1.5 rounded-md text-sm",
+        "flex items-center justify-center gap-1.5 text-sm",
         className,
         padding,
         bg,
+        rounded,
         text
       )}
       onClick={(e) => {

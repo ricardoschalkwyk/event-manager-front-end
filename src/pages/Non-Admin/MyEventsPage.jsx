@@ -9,6 +9,7 @@ import Event from "../../components/Event";
 import { clearEvents } from "../../store/events";
 
 function MyEventsPage({ getEvents }) {
+  // Data and loading state use pulled from the store
   const { data, loading } = useSelector((state) => state.events);
 
   const dispatch = useDispatch();
@@ -18,10 +19,12 @@ function MyEventsPage({ getEvents }) {
     getEvents();
 
     return () => {
+      // Clears previous events in the data store
       dispatch(clearEvents());
     };
   }, []);
 
+  // Loading is used before data is rendered
   if (loading) {
     return (
       <div className="flex items-center justify-center">

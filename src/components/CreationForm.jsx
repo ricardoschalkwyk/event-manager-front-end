@@ -67,6 +67,8 @@ function CreationForm() {
           handleSubmit({ name, description, occasion, date, time });
         }}
       >
+        {/* All input values are take and given to the handleSignUp where the request
+            will be fired */}
         <div className="p-4">
           <div className="text-gray-50">
             <h1>What is your event name</h1>
