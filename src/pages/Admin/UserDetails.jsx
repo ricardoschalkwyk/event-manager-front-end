@@ -10,7 +10,7 @@ import UserEvent from "./UserEvent";
 import { userEdit, removeEdit, eventAdd } from "../../store/users";
 
 const UserDetails = () => {
-  const { user, userEvents } = useSelector((state) => state.users);
+  const { edit, events } = useSelector((state) => state.users);
 
   const dispatch = useDispatch();
   const params = useParams();
@@ -42,17 +42,17 @@ const UserDetails = () => {
     getUserEvents();
 
     return () => {
-      if (user) {
+      if (edit) {
         dispatch(removeEdit());
       }
 
-      if (userEvents) {
+      if (events) {
         dispatch(removeEdit());
       }
     };
   }, []);
 
-  if (!user) {
+  if (!edit) {
     return null;
   }
 
@@ -61,7 +61,7 @@ const UserDetails = () => {
       <div>
         <div className="flex justify-center">
           <div className="max-w-sm grow rounded-md bg-gray-700 md:max-w-3xl">
-            <UserForm user={user} />
+            <UserForm user={edit} />
           </div>
         </div>
       </div>
@@ -79,7 +79,7 @@ const UserDetails = () => {
           <div className="border-b-2 border-gray-100"></div>
 
           <div className="grid grid-cols-4 items-center gap-2 py-2 text-gray-500">
-            {userEvents?.map((event) => (
+            {events?.map((event) => (
               <UserEvent key={event._id} event={event} dispatch={dispatch} />
             ))}
           </div>
