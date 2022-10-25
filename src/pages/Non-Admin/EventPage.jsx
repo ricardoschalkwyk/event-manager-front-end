@@ -97,7 +97,10 @@ function EventPage({ closeModal }) {
         {/* event creator */}
         <div className="flex justify-between">
           <div className="flex gap-2.5 p-2 text-gray-900">
-            Creator: <div className="text-gray-50">Benjamin bens</div>
+            Creator:{" "}
+            <div className="text-gray-50">
+              {event.user.firstName} {event.user.lastName}
+            </div>
           </div>
         </div>
 

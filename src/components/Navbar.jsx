@@ -129,7 +129,7 @@ function Navbar() {
         </div>
 
         <Dropdown options={filteredOptions()} right>
-          <div className="flex items-center gap-2 text-gray-700">
+          <div className="flex items-center gap-3 text-gray-700">
             <div className="text-white">Profile</div>
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-700 text-gray-300 ring-2 ring-orange-300">
               <div>{<UserFirstLetter user={user.firstName} />}</div>

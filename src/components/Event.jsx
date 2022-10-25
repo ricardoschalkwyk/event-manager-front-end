@@ -16,14 +16,6 @@ import UserFirstLetter from "./UserFirstLetter";
 // This sets the max length of a sentence within an event card
 let MAX_LENGTH = 99;
 
-if (window.innerWidth > 424) {
-  MAX_LENGTH = 30;
-}
-
-if (window.innerWidth > 1439) {
-  MAX_LENGTH = 50;
-}
-
 function Event({ edit = false, event, getEvents }) {
   const navigate = useNavigate();
 
@@ -45,24 +37,22 @@ function Event({ edit = false, event, getEvents }) {
 
       <div className="border-b-2 border-gray-100 pt-1.5"></div>
 
-      {window.innerWidth > 426 && (
-        <div className="pt-1.5 text-start text-sm">
-          <p>
-            {event.description.substring(0, MAX_LENGTH)}
-            {event.description.length > MAX_LENGTH ? "..." : null}
-          </p>
-        </div>
-      )}
+      <div className="pt-1.5 text-start text-sm">
+        <p className="break-words">
+          {event.description.substring(0, MAX_LENGTH)}
+          {event.description.length > MAX_LENGTH ? "..." : null}
+        </p>
+      </div>
 
       <div className="flex justify-end pt-1.5">
         <div className="rounded bg-gray-300 py-0.5 px-1 text-xs">
           <div className="flex items-center gap-1 divide-x divide-gray-400">
             <div className="flex items-center gap-1">
-              {event.date} <CalendarIcon className="h-2.5 w-2.5" />
+              {event.date} <CalendarIcon className="h-3 w-3" />
             </div>
             <div className="flex items-center gap-1 pl-1">
               {event.time}
-              <ClockIcon className=" h-2.5 w-2.5" />
+              <ClockIcon className="h-3 w-3" />
             </div>
           </div>
         </div>
@@ -70,10 +60,10 @@ function Event({ edit = false, event, getEvents }) {
 
       <div className="border-b-2 border-gray-100 pt-1.5"></div>
 
-      <div className="flex items-center justify-start gap-4 pt-1.5 text-gray-300">
+      <div className="flex items-center justify-start gap-4 text-gray-300">
         {/* Determines the set elements based on which value edit has*/}
         {!edit ? (
-          <div className="flex items-center gap-1 pt-1">
+          <div className="flex items-center gap-1 pt-2">
             <div className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-gray-700 object-cover">
               <div>{<UserFirstLetter user={event.user.firstName} />}</div>
             </div>
@@ -85,7 +75,7 @@ function Event({ edit = false, event, getEvents }) {
             </div>
           </div>
         ) : (
-          <div className="flex grow flex-col items-center justify-center gap-4 md:flex-row md:gap-9">
+          <div className="flex grow items-center justify-center gap-4 pt-4 md:gap-9">
             <Button
               onClick={() => {
                 navigate(`/event/${event._id}/edit`);

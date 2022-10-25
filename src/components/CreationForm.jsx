@@ -70,33 +70,30 @@ function CreationForm() {
         {/* All input values are take and given to the handleSignUp where the request
             will be fired */}
         <div className="p-4">
-          <div className="text-gray-50">
-            <h1>What is your event name</h1>
-            <div className="py-2">
-              <Input
-                type="text"
-                placeholder={"Event name"}
-                value={name}
-                onChange={(e) => setEventName(e.target.value)}
-                className="text-black"
-              />
-            </div>
+          <div className="py-2">
+            <Input
+              required
+              type="text"
+              label="What is your event name"
+              placeholder="Event name"
+              value={name}
+              onChange={(e) => setEventName(e.target.value)}
+            />
           </div>
-          <div className="text-gray-50">
-            <h1>What is your event about?</h1>
-            <div className="py-3">
-              <TextArea
-                name=""
-                id=""
-                cols="30"
-                rows="10"
-                placeholder="Event description"
-                value={description}
-                onChange={(e) => setEventDescription(e.target.value)}
-                className="h-20"
-              ></TextArea>
-            </div>
+
+          <div className="py-3">
+            <TextArea
+              required
+              cols="30"
+              rows="10"
+              label="What is your event about?"
+              placeholder="Event description"
+              value={description}
+              onChange={(e) => setEventDescription(e.target.value)}
+              className="h-20"
+            />
           </div>
+
           <div className="items-baseline gap-2 space-y-3 md:flex">
             <div>
               <Select options={options} setEventOccasion={setEventOccasion} />

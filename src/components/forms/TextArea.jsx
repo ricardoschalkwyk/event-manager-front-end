@@ -10,24 +10,28 @@ function TextArea({
   type = "text",
   onChange,
   value,
+  label,
   placeholder,
   required,
   icon,
 }) {
   return (
-    <div className="flex items-start gap-2 rounded-md bg-white py-2 px-3 text-black shadow-sm sm:text-sm">
-      {icon && <div>{icon}</div>}
-      <textarea
-        type={type}
-        className={clsx("w-full resize-none focus:outline-none", className)}
-        placeholder={placeholder}
-        required={required}
-        value={value}
-        onChange={(e) => {
-          onChange?.(e);
-        }}
-      ></textarea>
-    </div>
+    <>
+      {label && <label className="mb-2 block text-gray-50">{label}</label>}
+      <div className="flex items-start gap-2 rounded-md bg-white py-2 px-3 text-black shadow-sm sm:text-sm">
+        {icon && <div>{icon}</div>}
+        <textarea
+          type={type}
+          className={clsx("w-full resize-none focus:outline-none", className)}
+          placeholder={placeholder}
+          required={required}
+          value={value}
+          onChange={(e) => {
+            onChange?.(e);
+          }}
+        ></textarea>
+      </div>
+    </>
   );
 }
 

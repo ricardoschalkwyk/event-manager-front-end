@@ -10,24 +10,28 @@ function Input({
   type = "text",
   onChange,
   value,
+  label,
   placeholder,
   required,
   icon,
 }) {
   return (
-    <div className="flex items-center gap-2 rounded-md bg-white py-2 px-3 shadow-sm sm:text-sm">
-      {icon && <div>{icon}</div>}
-      <input
-        type={type}
-        className={clsx("w-full focus:outline-none", className)}
-        placeholder={placeholder}
-        required={required}
-        value={value}
-        onChange={(e) => {
-          onChange?.(e);
-        }}
-      />
-    </div>
+    <>
+      {label && <label className="mb-2 block text-gray-50">{label}</label>}
+      <div className="flex items-center gap-2 rounded-md bg-white py-2 px-3 shadow-sm sm:text-sm">
+        {icon && <div>{icon}</div>}
+        <input
+          type={type}
+          className={clsx("w-full focus:outline-none", className)}
+          placeholder={placeholder}
+          required={required}
+          value={value}
+          onChange={(e) => {
+            onChange?.(e);
+          }}
+        />
+      </div>
+    </>
   );
 }
 

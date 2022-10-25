@@ -48,19 +48,12 @@ VITE_API_URL= `Back-end Api_url`
 # Back-end
 
 JWT_TOKEN= `Jwt_token`
-
 GOOGLE_CLIENT_ID= `Client_id`
-
 GOOGLE_CLIENT_SECRET= `Client_secret`
-
 GOOGLE_REDIRECT_URI= `Redirect_uri`
 
-####################################
-
 FACEBOOK_CLIENT_ID= `Client_id`
-
 FACEBOOK_CLIENT_SECRET= `Client_secret`
-
 FACEBOOK_REDIRECT_URI= `Redirect_uri`
 
 # Deployed
@@ -78,6 +71,29 @@ The back-end was deployed on heroku
 
 The back-end will show show a not found on the browser you can just ignore that, but it does
 need to be open in the browser for the front-end to work
+
+# Design and initial build
+
+This is the user design.
+
+Web App || User
+
+This is what a user will bbe able to do and see as well as interact with.
+
+Web App || Admin
+
+An admin will also have an account just like a user but and admin will be
+able to switch over to the Admin section.
+
+To see the flow just open this link in the browser and sign-in to figma, Then on the right you will
+see 3 tabs: Design - Prototype - Inspect.
+
+Press the ProtoType option and it will switch over to giving you the flow and show the connections.
+
+To start the flow you just press the flow 1 button on the left of the first page and it will switch
+into a prototype mode where you can test what the functionality and flow will be.
+
+https://www.figma.com/file/7pk36M0kAwy4sex3yGEJ1V/Event-Web-App?node-id=0%3A1
 
 <!-- PART 2 OF THE CAPSTONE -->
 

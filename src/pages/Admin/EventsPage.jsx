@@ -55,16 +55,16 @@ const EventsPage = () => {
       </div>
 
       <div className="rounded-md bg-gray-700">
-        <div className="grid grid-cols-4 gap-4 rounded-md bg-gray-600 p-2 text-white">
-          <div className="col-span-1 py-3 px-3">Event</div>
-          <div className="col-span-1 py-3 px-3">Members</div>
-          <div className="py-3 px-3">User</div>
-          <div className="py-3 px-3">Actions</div>
+        <div className="grid grid-cols-4 gap-4 rounded-md bg-gray-600 p-4 text-white">
+          <div>Event</div>
+          <div>Members</div>
+          <div>User</div>
+          <div>Actions</div>
         </div>
 
-        <div className="border-b-2 border-gray-100"></div>
+        <div className="border-b border-gray-100"></div>
 
-        <div className="grid max-h-80 grid-cols-4 gap-4 overflow-hidden overflow-y-scroll p-2 text-gray-500">
+        <div className="grid max-h-80 grid-cols-4 items-center gap-4 overflow-hidden overflow-y-scroll p-4 text-gray-200">
           {events.map((event) => (
             <EventList key={event._id} event={event} dispatch={dispatch} />
           ))}

@@ -41,59 +41,61 @@ const Profile = () => {
   };
 
   return (
-    <div className="flex items-center justify-center">
-      <div className="flex max-w-fit items-center justify-center rounded-md bg-gray-500">
-        <div className="p-6 text-center text-gray-800">
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
+    <div className="flex justify-center">
+      <div className="max-w-sm grow rounded-md bg-gray-500 p-4 md:max-w-3xl">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
 
-              handleSubmit({ firstName, lastName, email, password });
-            }}
-          >
-            {/* All input values are take and given to the handleSignUp where the request
+            handleSubmit({ firstName, lastName, email, password });
+          }}
+        >
+          {/* All input values are take and given to the handleSignUp where the request
                 will be fired */}
-            <div className="pb-3">
-              <span>First name</span>
+          <div className="flex gap-3">
+            <div className="grow pb-3">
               <Input
+                required
                 type="text"
+                label="First name"
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
               />
             </div>
-
-            <div className="pb-3">
-              <span>Last name</span>
+            <div className="grow pb-3">
               <Input
+                required
                 type="text"
+                label="Last name"
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
               />
             </div>
+          </div>
 
-            <div className="pb-3">
-              <span>Email</span>
-              <Input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
+          <div className="pb-3">
+            <Input
+              required
+              type="email"
+              label="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
 
-            <div>
-              <span>Password</span>
-              <Input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
+          <div>
+            <Input
+              type="password"
+              label="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
 
-            <div className="flex justify-center pt-4">
-              <Button type="submit">Save profile</Button>
-            </div>
-          </form>
-        </div>
+          <div className="flex justify-end pt-4">
+            <Button type="submit">Save Profile</Button>
+          </div>
+        </form>
       </div>
     </div>
   );

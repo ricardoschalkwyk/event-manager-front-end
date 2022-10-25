@@ -12,6 +12,10 @@ const FacebookProcess = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { search } = useLocation();
+  console.log(
+    "🚀 ~ file: FacebookProcess.jsx ~ line 15 ~ FacebookProcess ~ search",
+    search
+  );
 
   const loading = useRef(false);
 
@@ -36,10 +40,20 @@ const FacebookProcess = () => {
     if (!loading.current) {
       sendToFacebook();
     }
+
+    const query = new URLSearchParams(search);
+    console.log(
+      "🚀 ~ file: FacebookProcess.jsx ~ line 45 ~ useEffect ~ query",
+      query.get("error")
+    );
+
+    if (query.get("error")) {
+      navigate("/sign-in-choice");
+    }
   }, []);
 
   return (
-    <div>
+    <div className="flex h-screen items-center justify-center gap-1">
       <div>Talking to Facebook</div>
       <div>
         <ArrowPathIcon className="h-5 w-5 animate-spin" />

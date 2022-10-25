@@ -61,40 +61,46 @@ const UserForm = ({ user }) => {
     >
       {/* All input values are take and given to the handleSignUp where the request
           will be fired */}
-      <div className="grid grid-cols-2 grid-rows-2 gap-4 text-black">
-        <div className="pl-4 pt-4">
+      <div className="grid grid-cols-2 grid-rows-2 gap-4 p-4 text-black">
+        <div>
           <Input
+            label="First name"
             placeholder="First name"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
           />
         </div>
-        <div className="pr-4 pt-4">
+        <div>
           <Input
+            label="Last name"
             placeholder="Last name"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
           />
         </div>
-        <div className="pl-4 pb-4">
+
+        <div>
           <Input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <div className="gap-2 pr-4 pb-4">
-          <Input
+            label="Email"
             type="email"
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
+
+        <div>
+          <Input
+            label="Password"
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
       </div>
 
-      <div className="flex justify-center gap-3 rounded-b-md bg-gray-400 py-6 px-3">
+      <div className="flex justify-end gap-3 rounded-b-md bg-gray-400 py-3 px-4">
         <Dialog deleteUser={deleteUser} />
         <Button type="submit">Save Changes</Button>
       </div>

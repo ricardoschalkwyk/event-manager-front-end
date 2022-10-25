@@ -63,14 +63,14 @@ const UsersPage = () => {
         </Button>
       </div>
       <div className="rounded-md bg-gray-700">
-        <div className="grid grid-cols-4 gap-4 rounded-md bg-gray-600 p-2 text-white">
-          <div className="col-span-2 py-3 px-3">User</div>
-          <div className="py-3">Role</div>
-          <div className="py-3">Actions</div>
+        <div className="grid grid-cols-4 gap-4 rounded-md bg-gray-600 p-4 text-white">
+          <div className="col-span-2">User</div>
+          <div>Role</div>
+          <div>Actions</div>
         </div>
-        <div className="border-b-2 border-gray-100"></div>
+        <div className="border-b border-gray-100"></div>
 
-        <div className="grid max-h-80 grid-cols-4 items-center gap-4 overflow-hidden overflow-y-scroll p-2 text-gray-500">
+        <div className="grid max-h-80 grid-cols-4 items-center gap-4 overflow-hidden overflow-y-scroll p-4 text-gray-200">
           {users.map((user) => (
             // Maps the array for users
             <UserList key={user._id} user={user} />
