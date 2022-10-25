@@ -63,7 +63,7 @@ const UserEvent = ({ event, dispatch, getUserEvents }) => {
 
 UserEvent.propTypes = {
   event: PropTypes.object,
-  getEvents: PropTypes.func,
+  getUserEvents: PropTypes.func,
   dispatch: PropTypes.func,
 };
 
