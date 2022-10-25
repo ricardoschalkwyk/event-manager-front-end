@@ -7,7 +7,7 @@ import Api from "../../api";
 import { eventAdd } from "../../store/events";
 import { useNavigate, useParams } from "react-router-dom";
 
-const UserEvent = ({ event, dispatch }) => {
+const UserEvent = ({ event, dispatch, getUserEvents }) => {
   const params = useParams();
   const navigate = useNavigate();
 
@@ -20,6 +20,7 @@ const UserEvent = ({ event, dispatch }) => {
       const res = await Api.get(`/events/findByUserId/${params.id}`);
 
       dispatch(eventAdd(res));
+      getUserEvents();
     } catch (error) {
       console.log(error);
     }

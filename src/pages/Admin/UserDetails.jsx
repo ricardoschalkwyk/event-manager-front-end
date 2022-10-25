@@ -85,7 +85,12 @@ const UserDetails = () => {
           )}
           <div className="grid grid-cols-4 items-center gap-2 py-2 text-gray-500">
             {events?.map((event) => (
-              <UserEvent key={event._id} event={event} dispatch={dispatch} />
+              <UserEvent
+                key={event._id}
+                event={event}
+                dispatch={dispatch}
+                getUserEvents={getUserEvents}
+              />
             ))}
           </div>
         </div>
