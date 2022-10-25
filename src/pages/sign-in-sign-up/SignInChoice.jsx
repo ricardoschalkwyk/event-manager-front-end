@@ -53,8 +53,6 @@ const facebookUrl = () => {
 };
 
 function SignInChoice() {
-  useEffect(() => {}, []);
-
   return (
     <div className="flex h-screen items-center justify-center p-4">
       <div className="text-center">
@@ -65,15 +63,21 @@ function SignInChoice() {
           <div className="pb-4 text-sm">Sign in with the following:</div>
         </div>
         <div className="space-y-4">
-          <div className="flex items-center justify-center gap-2 rounded-md bg-google p-2.5 text-white">
+          <a
+            href={googleUrl()}
+            className="flex items-center justify-center gap-2 rounded-md bg-google p-2.5 text-white"
+          >
             <FontAwesomeIcon icon={faGoogle} />
-            <a href={googleUrl()}>Sign in with Google</a>
-          </div>
+            Sign in with Google
+          </a>
 
-          <div className="flex items-center justify-center gap-2 rounded-md bg-facebook p-2.5 text-white">
+          <a
+            href={facebookUrl()}
+            className="flex items-center justify-center gap-2 rounded-md bg-facebook p-2.5 text-white"
+          >
             <FontAwesomeIcon icon={faFacebook} />
-            <a href={facebookUrl()}>Sign in with Facebook</a>
-          </div>
+            Sign in with Facebook
+          </a>
 
           <Link
             className="flex w-full place-content-center gap-2 rounded-sm bg-gray-500 p-2.5 text-white shadow-sm shadow-slate-500"

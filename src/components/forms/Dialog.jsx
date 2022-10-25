@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import Button from "./Button";
+import { XMarkIcon } from "@heroicons/react/24/solid";
 
 export default function MyModal({ deleteUser }) {
   const navigate = useNavigate();
@@ -62,6 +63,17 @@ export default function MyModal({ deleteUser }) {
                   >
                     Warning!!!
                   </Dialog.Title>
+                  <Button
+                    onClick={() => {
+                      closeModal();
+                    }}
+                    bg="bg-white"
+                    rounded="rounded-bl-md"
+                    className="absolute right-0 top-0 text-red-500 "
+                    padding="px-1 py-1"
+                  >
+                    <XMarkIcon className="h-8 w-8" />
+                  </Button>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">
                       Please confirm your request

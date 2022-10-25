@@ -72,11 +72,8 @@ function HomePage({ getUserEvents }) {
       ))}
 
       {/* Opens when event is clicked */}
-      {isOpen && (
-        <div>
-          <EventDialog isOpen={isOpen} setIsOpen={setIsOpen} />
-        </div>
-      )}
+
+      <EventDialog isOpen={isOpen} setIsOpen={setIsOpen} />
     </div>
   );
 }

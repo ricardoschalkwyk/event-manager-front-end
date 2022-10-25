@@ -24,11 +24,7 @@ const FacebookProcess = () => {
 
       const newSignIn = await Api.get(`/auth/facebook-sign-in?${query}`);
 
-      // Once signed in the token and data is saved to local storage
-      localStorage.setItem("token", newSignIn.token);
-      localStorage.setItem("user", JSON.stringify(newSignIn.user));
-
-      dispatch(login(newSignIn.user));
+      dispatch(login(newSignIn));
 
       navigate("/");
     } catch (error) {

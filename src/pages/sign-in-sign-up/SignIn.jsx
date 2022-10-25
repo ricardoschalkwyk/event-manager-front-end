@@ -42,12 +42,7 @@ function SignIn() {
         password,
       });
 
-      // Then if it does exist the token is given to a user when logged in
-      // Then it will be saved to localStorage
-      localStorage.setItem("token", newSignIn.token);
-      localStorage.setItem("user", JSON.stringify(newSignIn.user));
-
-      dispatch(login(newSignIn.user));
+      dispatch(login(newSignIn));
 
       // Navigate is called to after the process
       navigate("/");

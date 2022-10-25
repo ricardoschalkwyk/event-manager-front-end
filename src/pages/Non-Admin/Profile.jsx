@@ -7,6 +7,7 @@ import Api from "../../api";
 import Button from "../../components/forms/Button";
 import Input from "../../components/forms/Input";
 
+import { updateUser } from "../../store/auth";
 import { userAdd } from "../../store/users";
 
 const Profile = () => {
@@ -24,12 +25,14 @@ const Profile = () => {
       if (!data.password) {
         delete data.password;
       }
+
       // POST request
       // This sends the post request
-      await Api.put(`/users/${user._id}`, data);
+      const newUser = await Api.put(`/users/${user._id}`, data);
 
       const res = await Api.get("/users");
 
+      dispatch(updateUser(newUser));
       dispatch(userAdd(res));
       setPassword("");
     } catch (error) {

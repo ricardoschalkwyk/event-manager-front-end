@@ -13,9 +13,9 @@ function MembersList({ listing, setIsJoined, getEvent }) {
 
   const user = useSelector((state) => state.auth.user);
 
-  const handleRemove = async () => {
+  const handleRemove = async (userId) => {
     try {
-      await Api.get(`/events/${eventId}/leave`);
+      await Api.get(`/events/${eventId}/leave/${userId}`);
       getEvent();
     } catch (error) {
       console.log(error);
@@ -56,7 +56,8 @@ function MembersList({ listing, setIsJoined, getEvent }) {
                       <Button
                         className="py-1.5"
                         onClick={() => {
-                          handleRemove(), setIsJoined(false);
+                          handleRemove(item._id);
+                          setIsJoined(false);
                         }}
                       >
                         Remove

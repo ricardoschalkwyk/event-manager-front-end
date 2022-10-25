@@ -25,10 +25,7 @@ const GoogleProcess = () => {
       // Once signed in the token and data is saved to local storage
       const newSignIn = await Api.get(`/auth/google-sign-in?${query}`);
 
-      localStorage.setItem("token", newSignIn.token);
-      localStorage.setItem("user", JSON.stringify(newSignIn.user));
-
-      dispatch(login(newSignIn.user));
+      dispatch(login(newSignIn));
 
       navigate("/");
     } catch (error) {

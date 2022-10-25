@@ -9,9 +9,7 @@ import Api from "../../api";
 import MembersList from "../../components/MembersList";
 import Button from "../../components/forms/Button";
 
-import { eventEdit, removeEdit } from "../../store/events";
-
-import { XMarkIcon } from "@heroicons/react/20/solid";
+import { eventAdd, eventEdit, removeEdit } from "../../store/events";
 
 function EventPage({ closeModal }) {
   const event = useSelector((state) => state.events.edit);
@@ -37,6 +35,18 @@ function EventPage({ closeModal }) {
     }
   };
 
+  async function getUserEvents() {
+    try {
+      // This gets fired once the page is ready
+      const response = await Api.get("/events/all");
+
+      // Adds the response to the redux store
+      dispatch(eventAdd(response));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const handleJoin = async () => {
     try {
       await Api.get(`/events/${eventId}/join`);
@@ -49,7 +59,7 @@ function EventPage({ closeModal }) {
 
   const handleLeave = async () => {
     try {
-      await Api.get(`/events/${eventId}/leave`);
+      await Api.get(`/events/${eventId}/leave/${user._id}`);
 
       getEvent();
     } catch (error) {
@@ -62,14 +72,14 @@ function EventPage({ closeModal }) {
       // Makes delete request
       await Api.delete(`/events/${eventId}`);
 
-      // Then makes a Get request after to get to output
-      getEvent();
+      getUserEvents();
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
+    getUserEvents();
     getEvent();
 
     return () => {
@@ -89,18 +99,6 @@ function EventPage({ closeModal }) {
           <div className="flex gap-2.5 p-2 text-gray-900">
             Creator: <div className="text-gray-50">Benjamin bens</div>
           </div>
-
-          <Button
-            onClick={() => {
-              closeModal();
-            }}
-            bg="bg-gray-200"
-            rounded="rounded-bl-md"
-            className="text-red-500 ring-1 ring-gray-200"
-            padding="px-1 py-1"
-          >
-            <XMarkIcon className="h-8 w-8" />
-          </Button>
         </div>
 
         <div className="pt-4">
@@ -167,6 +165,7 @@ function EventPage({ closeModal }) {
               <Button
                 onClick={() => {
                   handleDelete();
+                  closeModal();
                   navigate("/");
                 }}
                 bg="bg-white"
@@ -189,8 +188,5 @@ function EventPage({ closeModal }) {
     </div>
   );
 }
-EventPage.propTypes = {
-  closeModal: PropTypes.func,
-};
 
 export default EventPage;
