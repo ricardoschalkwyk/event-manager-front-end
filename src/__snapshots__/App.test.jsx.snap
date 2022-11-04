@@ -1,0 +1,256 @@
+// Vitest Snapshot v1
+
+exports[`App tests > Matches Snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div>
+        <div
+          class="flex h-screen items-center justify-center p-4"
+        >
+          <div
+            class="text-center"
+          >
+            <div
+              class="text-gray-700"
+            >
+              <div
+                class="pb-2 text-3xl font-bold"
+              >
+                Welcome to Event Management!
+              </div>
+              <div
+                class="pb-4 text-sm"
+              >
+                Sign in with the following:
+              </div>
+            </div>
+            <div
+              class="space-y-4"
+            >
+              <a
+                class="flex items-center justify-center gap-2 rounded-md bg-google p-2.5 text-white"
+                href="https://accounts.google.com/o/oauth2/v2/auth?client_id=26061662701-25vpl3ojbn1t5djbegb9ctiff26vdva7.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fauth%2Fgoogle&access_type=offline&response_type=code&prompt=consent&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-google "
+                  data-icon="google"
+                  data-prefix="fab"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 488 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"
+                    fill="currentColor"
+                  />
+                </svg>
+                Sign in with Google
+              </a>
+              <a
+                class="flex items-center justify-center gap-2 rounded-md bg-facebook p-2.5 text-white"
+                href="https://www.facebook.com/v15.0/dialog/oauth?client_id=1557189841395800&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fauth%2Ffacebook&response_type=code&state=321cba&scope=email+public_profile"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-facebook "
+                  data-icon="facebook"
+                  data-prefix="fab"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 512 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"
+                    fill="currentColor"
+                  />
+                </svg>
+                Sign in with Facebook
+              </a>
+              <a
+                as="[object Object]"
+                class="flex w-full place-content-center gap-2 rounded-sm bg-gray-500 p-2.5 text-white shadow-sm shadow-slate-500"
+                href="/sign-in"
+              >
+                <div>
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-envelope "
+                    data-icon="envelope"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  Sign in with Email
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div>
+      <div
+        class="flex h-screen items-center justify-center p-4"
+      >
+        <div
+          class="text-center"
+        >
+          <div
+            class="text-gray-700"
+          >
+            <div
+              class="pb-2 text-3xl font-bold"
+            >
+              Welcome to Event Management!
+            </div>
+            <div
+              class="pb-4 text-sm"
+            >
+              Sign in with the following:
+            </div>
+          </div>
+          <div
+            class="space-y-4"
+          >
+            <a
+              class="flex items-center justify-center gap-2 rounded-md bg-google p-2.5 text-white"
+              href="https://accounts.google.com/o/oauth2/v2/auth?client_id=26061662701-25vpl3ojbn1t5djbegb9ctiff26vdva7.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fauth%2Fgoogle&access_type=offline&response_type=code&prompt=consent&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile"
+            >
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-google "
+                data-icon="google"
+                data-prefix="fab"
+                focusable="false"
+                role="img"
+                viewBox="0 0 488 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"
+                  fill="currentColor"
+                />
+              </svg>
+              Sign in with Google
+            </a>
+            <a
+              class="flex items-center justify-center gap-2 rounded-md bg-facebook p-2.5 text-white"
+              href="https://www.facebook.com/v15.0/dialog/oauth?client_id=1557189841395800&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fauth%2Ffacebook&response_type=code&state=321cba&scope=email+public_profile"
+            >
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-facebook "
+                data-icon="facebook"
+                data-prefix="fab"
+                focusable="false"
+                role="img"
+                viewBox="0 0 512 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"
+                  fill="currentColor"
+                />
+              </svg>
+              Sign in with Facebook
+            </a>
+            <a
+              as="[object Object]"
+              class="flex w-full place-content-center gap-2 rounded-sm bg-gray-500 p-2.5 text-white shadow-sm shadow-slate-500"
+              href="/sign-in"
+            >
+              <div>
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-envelope "
+                  data-icon="envelope"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 512 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+              <div>
+                Sign in with Email
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

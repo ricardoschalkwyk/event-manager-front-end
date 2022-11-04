@@ -31,11 +31,13 @@ which will allow a user's password to be encrypted which will keep them safe.
 There will also be some other protection middleware implemented into the back-end
 of this web app.
 
-All keys and token are stored in a .env file so that they are hidden from the public.
+All keys and tokens are stored in a .env file so that they are hidden from the public.
 
 # Front-end
 
 Your will need to structure Front-end .env file like this.
+
+If You would like to enter your own input you only need to add them to there assigned points
 
 VITE_GOOGLE_CLIENT_ID= `Client_id`
 VITE_GOOGLE_REDIRECT_URI= `Redirect_uri`
@@ -69,8 +71,8 @@ The back-end was deployed on heroku
 
 ## back-end = https://event-managing-back-end.herokuapp.com/
 
-The back-end will show show a not found on the browser you can just ignore that, but it does
-need to be open in the browser for the front-end to work
+The back-end will show a not found on the browser, there is no cause for concern,
+the tab just needs to stay open so that the rest api can be turned on.
 
 # Design and initial build
 

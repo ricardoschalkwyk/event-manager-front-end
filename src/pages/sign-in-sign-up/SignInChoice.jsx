@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -83,6 +82,7 @@ function SignInChoice() {
             className="flex w-full place-content-center gap-2 rounded-sm bg-gray-500 p-2.5 text-white shadow-sm shadow-slate-500"
             to="/sign-in"
             as={NavLink}
+            data-testid="Test-Link"
           >
             <div>
               <FontAwesomeIcon icon={faEnvelope} />

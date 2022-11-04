@@ -64,9 +64,9 @@ function App() {
         <Route path="/auth/google" element={<GoogleProcess />} />
         <Route path="/auth/facebook" element={<FacebookProcess />} />
 
-        <Route path="/sign-in-choice" element={<SignInChoice />} />
-
         <Route path="/sign-in" element={<SignIn />} />
+
+        <Route path="/sign-in-choice" element={<SignInChoice />} />
 
         <Route path="/sign-up" element={<SignUp />} />
 
