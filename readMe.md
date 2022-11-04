@@ -20,6 +20,8 @@ To run the app use one of these commands
 
 # Third-party api
 
+I use no third party apis
+
 # Security
 
 This app will have password protection like the kind of protection provided by Bcrypt
@@ -116,6 +118,8 @@ Their is also a members list if you wanted to join someone else's events or your
 
 # ADMIN USE
 
+The adminAccess.txt file holds the logins to test admin control
+
 The admin will be a user that has has an option exclusive to them on their dropdown when pressing the
 profile button.
 
@@ -137,9 +141,11 @@ I will be using the `MERN` stack.
 
 `Node.js`:`https://nodejs.org/en/`
 
-## FrameWork = Vite 3.0
+## Framework = React.js
 
-I have chosen to use `Vite` for my front-end framework.
+I'll a
+
+I have chosen to use `Vite` for my front-end scaffolding tool.
 
 Vite doesn't need to bundle the entire app or transpile the
 modules and code before starting a dev server; transpiring

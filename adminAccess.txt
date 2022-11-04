@@ -1,0 +1,9 @@
+Development Access uses this account for admin control:
+
+User Email - Fiona.Lehner@hotmail.com
+Password - qwerty
+
+Deployment uses this account:
+
+User Email - Admin@gmail.com
+password - qwerty
